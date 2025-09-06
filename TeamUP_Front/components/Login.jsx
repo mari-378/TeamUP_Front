@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert, TouchableOpacity, Modal, ScrollView} from 'react-native';
+import Botao from './Botao';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -104,20 +105,15 @@ export default function Login() {
         </View>
       </Modal>
 
-      <TouchableOpacity style={styles.button} onPress={() => {
+      <Botao title="ENTRAR" onPress={() => {
         if (!aceitouTermos) {
           Alert.alert('Termos de uso', 'Você deve aceitar os termos de uso para continuar.');
           return;
         }
         handleSubmit(onSubmit)();
-      }}
-      >
-        <Text style={styles.buttonText}>ENTRAR</Text>
-      </TouchableOpacity>
+      } }/>
 
-      <TouchableOpacity style={styles.button} onPress={() => Alert.alert('Criar conta', 'Funcionalidade ainda não implementada')}>
-        <Text style={styles.buttonText}>CRIAR CONTA</Text>
-      </TouchableOpacity>
+      <Botao title="CRIAR CONTA" onPress={() => Alert.alert('Criar conta', 'Funcionalidade ainda não implementada')} style={{ marginBottom: 10 }} />
 
       <TouchableOpacity style={styles.loginGoogle} onPress={() => Alert.alert('Login com Google', 'Funcionalidade ainda não implementada')}>
         <AntDesign name="google" size={20} color={Cores.azul} style={styles.icon} />
@@ -158,17 +154,6 @@ const styles = StyleSheet.create({
   error: {
     color: Cores.azul,
     marginBottom: 10,
-  },
-  button: {
-    borderRadius: 50,
-    backgroundColor: Cores.azul,
-    marginBottom: 20,
-  },
-  buttonText: {
-    color: Cores.branco,
-    textAlign: 'center',
-    padding: 10,
-    fontWeight: 'bold',
   },
   checkboxContainer: {
     flexDirection: 'row',
