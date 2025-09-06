@@ -2,16 +2,19 @@
     "login": {
         "email": "Email",
         "password": "Senha",
+        "forgotPassword": "ESQUECI MINHA SENHA",
         "loginButton": "ENTRAR",
         "createAccountButton": "CRIAR CONTA",
-        "termsOfService": "EU LI E CONCORDO COM OS TERMOS DE USO",
+        "termsOfServiceStart": "EU LI E CONCORDO COM OS",
+        "termsOfServiceMid": "TERMOS",
+        "termsOfServiceEnd": "DE USO",
         "loginWithGoogle": "Entrar com o Google",
         "invalidEmail": "Formato de email inválido",
         "passwordRequired": "Senha é obrigatória",
         "emailRequired": "Email é obrigatório",
         "acceptTerms": "Você deve aceitar os termos de uso para continuar.",
-        "termsTitle": "TERMOS DE USO",
+        "termsTitle": "Termos de Uso",
         "termsContent": "Aqui estão os termos de uso...",
-        "close": "Fechar"
+        "close": "FECHAR"
     }
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Alert, TouchableOpacity, Modal, ScrollView} from 'react-native';
+import "@/i18n";
+import { useTranslation } from 'react-i18next';
 import Botao from './Botao';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -16,6 +18,8 @@ export default function Login() {
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const { t } = useTranslation();
 
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [aceitouTermos, setAceitouTermos] = useState(false);
@@ -36,7 +40,7 @@ export default function Login() {
               <Ionicons name="mail-outline" size={18} color={Cores.azul} style={styles.icon} />
               <TextInput
                 style={[styles.input, { outline: 'none' }]}
-                placeholder="Email"
+                placeholder={t('login.email')}
                 value={value}
                 onChangeText={onChange}
                 keyboardType="email-address"
@@ -57,7 +61,7 @@ export default function Login() {
               <Ionicons name="lock-closed-outline" size={18} color={Cores.azul} style={styles.icon} />
               <TextInput
                 style={[styles.input, { outline: 'none' }]}
-                placeholder="Senha"
+                placeholder={t('login.password')}
                 value={value}
                 onChangeText={onChange}
                 secureTextEntry={!mostrarSenha}
@@ -72,16 +76,16 @@ export default function Login() {
       />
 
       <TouchableOpacity onPress={() => Alert.alert('Redefinir senha', 'Funcionalidade ainda não implementada')}>
-        <Text style={styles.forgotPassword}>ESQUECI MINHA SENHA</Text>
+        <Text style={styles.forgotPassword}>{t('login.forgotPassword')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.checkboxContainer} onPress={() => setAceitouTermos(!aceitouTermos)} activeOpacity={1}>
         <Feather name={aceitouTermos ? "square" : "check-square"} size={12} color={Cores.azul} style={styles.icon} />
-        <Text style={styles.checkboxText}>EU LI E CONCORDO COM OS{' '} 
+        <Text style={styles.checkboxText}>{t('login.termsOfServiceStart')}{' '} 
           <Text style={styles.linkText} onPress={() => setModalVisible(true)}> 
-            TERMOS
+            {t('login.termsOfServiceMid')}
             </Text>{' '} 
-            DE USO</Text>
+            {t('login.termsOfServiceEnd')}</Text>
       </TouchableOpacity>
 
       <Modal
@@ -93,19 +97,17 @@ export default function Login() {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <ScrollView>
-              <Text style={styles.modalTitle}>Termos de Uso</Text>
-              <Text style={styles.modalText}>
-                TERMOS AQUI!!!!! ADICIONAR DEPOIS
-              </Text>
+              <Text style={styles.modalTitle}>{t('login.termsTitle')}</Text>
+              <Text style={styles.modalText}>{t('login.termsContent')}</Text>
             </ScrollView>
             <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
-              <Text style={styles.closeButtonText}>FECHAR</Text>
+              <Text style={styles.closeButtonText}>{t('login.close')}</Text>
             </TouchableOpacity>
           </View>
         </View>
       </Modal>
 
-      <Botao title="ENTRAR" onPress={() => {
+      <Botao title={t('login.loginButton')} onPress={() => {
         if (!aceitouTermos) {
           Alert.alert('Termos de uso', 'Você deve aceitar os termos de uso para continuar.');
           return;
@@ -113,11 +115,11 @@ export default function Login() {
         handleSubmit(onSubmit)();
       } }/>
 
-      <Botao title="CRIAR CONTA" onPress={() => Alert.alert('Criar conta', 'Funcionalidade ainda não implementada')} style={{ marginBottom: 10 }} />
+      <Botao title={t('login.createAccountButton')} onPress={() => Alert.alert('Criar conta', 'Funcionalidade ainda não implementada')} style={{ marginBottom: 10 }} />
 
       <TouchableOpacity style={styles.loginGoogle} onPress={() => Alert.alert('Login com Google', 'Funcionalidade ainda não implementada')}>
         <AntDesign name="google" size={20} color={Cores.azul} style={styles.icon} />
-        <Text style={styles.loginGoogleText}>Entrar com o Google</Text>
+        <Text style={styles.loginGoogleText}>{t('login.loginWithGoogle')}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -139,7 +141,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 50,
     backgroundColor: Cores.verde,
-    opacity: 0.3,
+    opacity: 0.5,
     color: Cores.azul,
     height: 40,
   },

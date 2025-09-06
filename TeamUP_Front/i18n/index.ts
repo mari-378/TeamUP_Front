@@ -44,7 +44,7 @@ const initI18n = async () => {
             fallbackLng: {
                 "en-*": ["en-US", "en"],
                 "pt-*": ["pt-BR", "pt"],
-                default: ["pt-BR"]
+                default: ["pt-BR"],
             },
             interpolation: {
                 escapeValue: false

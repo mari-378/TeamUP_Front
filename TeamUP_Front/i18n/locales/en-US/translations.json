@@ -2,9 +2,12 @@
     "login": {
         "email": "Email",
         "password": "Password",
-        "loginButton": "Login",
-        "createAccountButton": "Create Account",
-        "termsOfService": "I accept the Terms of Service",
+        "forgotPassword": "FORGOT MY PASSWORD",
+        "loginButton": "LOGIN",
+        "createAccountButton": "CREATE ACCOUNT",
+        "termsOfServiceStart": "I HAVE READ AND ACCEPTED THE",
+        "termsOfServiceMid": "TERMS",
+        "termsOfServiceEnd": "OF SERVICE",
         "loginWithGoogle": "Login with Google",
         "invalidEmail": "Invalid email format",
         "passwordRequired": "Password is required",
@@ -12,6 +15,6 @@
         "acceptTerms": "You must accept the Terms of Service to continue.",
         "termsTitle": "Terms of Service",
         "termsContent": "Here are the terms of service...",
-        "close": "Close"
+        "close": "CLOSE"
     }
 }
