@@ -1,0 +1,17 @@
+{
+    "login": {
+        "email": "Email",
+        "password": "Password",
+        "loginButton": "Login",
+        "createAccountButton": "Create Account",
+        "termsOfService": "I accept the Terms of Service",
+        "loginWithGoogle": "Login with Google",
+        "invalidEmail": "Invalid email format",
+        "passwordRequired": "Password is required",
+        "emailRequired": "Email is required",
+        "acceptTerms": "You must accept the Terms of Service to continue.",
+        "termsTitle": "Terms of Service",
+        "termsContent": "Here are the terms of service...",
+        "close": "Close"
+    }
+}
