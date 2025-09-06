@@ -130,7 +130,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    maxHeight: '30%',
+    alignSelf: 'center',
+    width: '80%',
+    maxWidth: 400,
   },
   inputContainer: {
     flexDirection: 'row',

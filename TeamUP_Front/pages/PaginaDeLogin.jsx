@@ -1,37 +1,52 @@
-import { View, StyleSheet, Image, Dimensions } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import Login from "../components/Login";
 import MudarLingua from "../components/MudarLingua";
 import { Cores } from "@/constants/Cores";
 
-const { width, height } = Dimensions.get('window');
-
 export default function PaginaDeLogin() {
   return (
     <View style={styles.container}>
-      <MudarLingua style={styles.mudarLingua} />
-      <Image source={require('../assets/images/logo.png')} style={styles.logo} resizeMode="contain" />
-      <Login />
+      <View style={styles.mudarLingua}>
+        <MudarLingua />
+      </View>
+      <View style={styles.logo}>
+        <Image source={require('../assets/images/logo.png')} style={styles.logoImg} resizeMode="contain" />
+      </View>
+      <View style={styles.login}>
+        <Login />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '100%',
     flex: 1,
     backgroundColor: Cores.branco,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
   },
-  logo: {
-    width: width * 0.5,
-    aspectRatio: 1,
-    maxHeight: height * 0.3,
-    marginBottom: 50,
-  },
   mudarLingua: {
     position: 'absolute',
+    top: 30,
+    right: 30,
+    zIndex: 10,
   },
+  logo: {
+    flex: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80%',
+  },
+  logoImg: {
+    width: '100%',
+    height: '100%',
+  },
+  login: {
+    flex: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  }
 });

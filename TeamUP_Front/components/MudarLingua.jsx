@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
         padding: 5,
         borderRadius: 5,
         alignSelf: 'flex-end',
-        right: '5%',
+        // right: 20,
+        // top: 20,
     },
     buttonText: {
         color: Cores.azul,
