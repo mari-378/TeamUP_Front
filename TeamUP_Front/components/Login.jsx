@@ -37,7 +37,12 @@ export default function Login() {
         render={({ field: { onChange, value } }) => (
           <>
             <View style={styles.inputContainer}>
-              <Ionicons name="mail-outline" size={18} color={Cores.azul} style={styles.icon} />
+              <Ionicons 
+                name="mail-outline" 
+                size={18} 
+                color={Cores.azul} 
+                style={styles.icon} 
+              />
               <TextInput
                 style={[styles.input, { outline: 'none' }]}
                 placeholder={t('login.email')}
@@ -58,7 +63,12 @@ export default function Login() {
         render={({ field: { onChange, value } }) => (
           <>
             <View style={styles.inputContainer}>
-              <Ionicons name="lock-closed-outline" size={18} color={Cores.azul} style={styles.icon} />
+              <Ionicons 
+                name="lock-closed-outline" 
+                size={18} 
+                color={Cores.azul} 
+                style={styles.icon} 
+              />
               <TextInput
                 style={[styles.input, { outline: 'none' }]}
                 placeholder={t('login.password')}
@@ -66,8 +76,15 @@ export default function Login() {
                 onChangeText={onChange}
                 secureTextEntry={!mostrarSenha}
               />
-              <TouchableOpacity onPress={() => setMostrarSenha(!mostrarSenha)} style={styles.icon}>
-                <Ionicons name={mostrarSenha ? "eye-outline" : "eye-off-outline" } size={18} color={Cores.azul} />
+              <TouchableOpacity 
+                onPress={() => setMostrarSenha(!mostrarSenha)} 
+                style={styles.eyeButton}
+              >
+                <Ionicons 
+                  name={mostrarSenha ? "eye-outline" : "eye-off-outline" } 
+                  size={18} 
+                  color={Cores.azul} 
+                />
               </TouchableOpacity>
             </View>
             {errors.senha && <Text style={styles.error}>{errors.senha.message}</Text>}
@@ -79,13 +96,24 @@ export default function Login() {
         <Text style={styles.forgotPassword}>{t('login.forgotPassword')}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.checkboxContainer} onPress={() => setAceitouTermos(!aceitouTermos)} activeOpacity={1}>
-        <Feather name={aceitouTermos ? "square" : "check-square"} size={12} color={Cores.azul} style={styles.icon} />
+      <TouchableOpacity 
+        style={styles.checkboxContainer} 
+        onPress={() => setAceitouTermos(!aceitouTermos)} 
+        activeOpacity={1}
+      >
+
+        <Feather 
+          name={aceitouTermos ? "square" : "check-square"} 
+          size={12} color={Cores.azul} 
+          style={styles.icon} />
         <Text style={styles.checkboxText}>{t('login.termsOfServiceStart')}{' '} 
-          <Text style={styles.linkText} onPress={() => setModalVisible(true)}> 
+          <Text 
+            style={styles.linkText} 
+            onPress={() => setModalVisible(true)}> 
             {t('login.termsOfServiceMid')}
-            </Text>{' '} 
-            {t('login.termsOfServiceEnd')}</Text>
+          </Text>
+          {' '}{t('login.termsOfServiceEnd')}
+        </Text>
       </TouchableOpacity>
 
       <Modal
@@ -100,25 +128,42 @@ export default function Login() {
               <Text style={styles.modalTitle}>{t('login.termsTitle')}</Text>
               <Text style={styles.modalText}>{t('login.termsContent')}</Text>
             </ScrollView>
-            <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+            <TouchableOpacity 
+              style={styles.closeButton} 
+              onPress={() => setModalVisible(false)}>
               <Text style={styles.closeButtonText}>{t('login.close')}</Text>
             </TouchableOpacity>
           </View>
         </View>
       </Modal>
 
-      <Botao title={t('login.loginButton')} onPress={() => {
+      <Botao 
+        title={t('login.loginButton')} 
+        onPress={() => {
         if (!aceitouTermos) {
           Alert.alert('Termos de uso', 'Você deve aceitar os termos de uso para continuar.');
           return;
         }
         handleSubmit(onSubmit)();
-      } }/>
+      }}
+      />
 
-      <Botao title={t('login.createAccountButton')} onPress={() => Alert.alert('Criar conta', 'Funcionalidade ainda não implementada')} style={{ marginBottom: 10 }} />
+      <Botao 
+        title={t('login.createAccountButton')} 
+        onPress={() => Alert.alert('Criar conta', 'Funcionalidade ainda não implementada')} 
+        style={{ marginBottom: 10 }} 
+      />
 
-      <TouchableOpacity style={styles.loginGoogle} onPress={() => Alert.alert('Login com Google', 'Funcionalidade ainda não implementada')}>
-        <AntDesign name="google" size={20} color={Cores.azul} style={styles.icon} />
+      <TouchableOpacity 
+        style={styles.loginGoogle} 
+        onPress={() => Alert.alert('Login com Google', 'Funcionalidade ainda não implementada')}
+      >
+        <AntDesign 
+          name="google" 
+          size={20} 
+          color={Cores.azul} 
+          style={styles.icon} 
+        />
         <Text style={styles.loginGoogleText}>{t('login.loginWithGoogle')}</Text>
       </TouchableOpacity>
     </View>
@@ -154,6 +199,13 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 40,
     color: Cores.azul,
+    minWidth: 0,
+  },
+  eyeButton: {
+    paddingHorizontal: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 30,
   },
   error: {
     color: Cores.azul,

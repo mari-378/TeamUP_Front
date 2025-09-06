@@ -10,7 +10,11 @@ export default function PaginaDeLogin() {
         <MudarLingua />
       </View>
       <View style={styles.logo}>
-        <Image source={require('../assets/images/logo.png')} style={styles.logoImg} resizeMode="contain" />
+        <Image 
+          source={require('../assets/images/logo.png')} 
+          style={styles.logoImg} 
+          resizeMode="contain" 
+        />
       </View>
       <View style={styles.login}>
         <Login />
