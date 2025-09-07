@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
         backgroundColor: Cores.verde,
         padding: 5,
         borderRadius: 5,
-        alignSelf: 'flex-end',
     },
     buttonText: {
         color: Cores.azul,

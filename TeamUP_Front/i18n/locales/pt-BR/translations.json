@@ -10,11 +10,18 @@
         "termsOfServiceEnd": "DE USO",
         "loginWithGoogle": "Entrar com o Google",
         "invalidEmail": "Formato de email inválido",
-        "passwordRequired": "Senha é obrigatória",
-        "emailRequired": "Email é obrigatório",
         "acceptTerms": "Você deve aceitar os termos de uso para continuar.",
         "termsTitle": "Termos de Uso",
         "termsContent": "Aqui estão os termos de uso...",
         "close": "FECHAR"
+    },
+    "validation": {
+        "invalidEmail": "Formato de email inválido",
+        "emailRequired": "A senha deve ter pelo menos 6 caracteres",
+        "passwordMin": "A senha deve ter pelo menos 6 caracteres",
+        "passwordRequired": "A senha é obrigatória",
+        "nameRequired": "O nome é obrigatório",
+        "passwordsMustMatch": "As senhas devem coincidir",
+        "confirmPasswordRequired": "A confirmação de senha é obrigatória"
     }
 }

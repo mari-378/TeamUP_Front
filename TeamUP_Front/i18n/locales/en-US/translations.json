@@ -16,5 +16,14 @@
         "termsTitle": "Terms of Service",
         "termsContent": "Here are the terms of service...",
         "close": "CLOSE"
+    },
+    "validation": {
+        "invalidEmail": "Invalid email format",
+        "emailRequired": "Email is required",
+        "passwordMin": "Password must be at least 6 characters",
+        "passwordRequired": "Password is required",
+        "nameRequired": "Name is required",
+        "passwordsMustMatch": "Passwords must match",
+        "confirmPasswordRequired": "Confirm Password is required"
     }
 }

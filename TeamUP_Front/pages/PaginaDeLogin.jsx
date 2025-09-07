@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
   },
   mudarLingua: {
     position: 'absolute',
-    top: 30,
-    right: 30,
+    top: 40,
+    right: 40,
     zIndex: 10,
   },
   logo: {

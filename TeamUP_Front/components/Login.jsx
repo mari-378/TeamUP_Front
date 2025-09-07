@@ -5,21 +5,18 @@ import { useTranslation } from 'react-i18next';
 import Botao from './Botao';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { loginSchema } from '@/validation/schemas';
 import { Cores } from '../constants/Cores';
 import { Ionicons, Feather, AntDesign } from '@expo/vector-icons';
 
-const schema = yup.object().shape({
-  email: yup.string().email('Email inválido').required('O email é obrigatório'),
-  senha: yup.string().min(6, 'A senha deve ter pelo menos 6 caracteres').required('A senha é obrigatória'),
-});
-
 export default function Login() {
+  const { t } = useTranslation();
+
+  const schema = loginSchema(t);
+
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const { t } = useTranslation();
 
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [aceitouTermos, setAceitouTermos] = useState(false);
@@ -214,6 +211,7 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 10,
   },
   checkboxText: {
@@ -246,7 +244,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   modalContent: {
-    maxWidth: '30%',
+    maxWidth: '50%',
     backgroundColor: Cores.verde,
     borderRadius: 10,
     padding: 20,
