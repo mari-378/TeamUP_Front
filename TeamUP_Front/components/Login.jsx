@@ -22,8 +22,28 @@ export default function Login() {
   const [aceitouTermos, setAceitouTermos] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const onSubmit = data => {
-    Alert.alert('Dados enviados', `Email: ${data.email}\nSenha: ${data.senha}`);
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('https://teamup.com/api/login', { // só um exemplo de url, será trocada pela real depois
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email,
+          senha: data.senha,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao fazer login');
+      }
+
+      const result = await response.json(); // no momento não uso um resultado. talvez colocar um token depois?
+      Alert.alert('Sucesso', 'Login realizado com sucesso!');
+    } catch (error) {
+      Alert.alert('Erro', error.message);
+    }
   };
 
   return (
@@ -145,7 +165,7 @@ export default function Login() {
       }}
       />
 
-      <Botao 
+      <Botao
         title={t('login.createAccountButton')} 
         onPress={() => Alert.alert('Criar conta', 'Funcionalidade ainda não implementada')} 
         style={{ marginBottom: 10 }} 
