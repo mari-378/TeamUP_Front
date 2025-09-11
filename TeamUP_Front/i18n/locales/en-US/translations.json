@@ -25,5 +25,10 @@
         "nameRequired": "Name is required",
         "passwordsMustMatch": "Passwords must match",
         "confirmPasswordRequired": "Confirm Password is required"
+    },
+    "navbar": {
+        "aboutUs": "About Us",
+        "features": "Features",
+        "signUp": "Sign Up"
     }
 }

@@ -23,5 +23,10 @@
         "nameRequired": "O nome é obrigatório",
         "passwordsMustMatch": "As senhas devem coincidir",
         "confirmPasswordRequired": "A confirmação de senha é obrigatória"
+    },
+    "navbar": {
+        "aboutUs": "Sobre Nós",
+        "features": "Funcionalidades",
+        "signUp": "Cadastrar"
     }
 }
