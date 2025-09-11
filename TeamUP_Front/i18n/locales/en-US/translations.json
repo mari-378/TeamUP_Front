@@ -1,0 +1,34 @@
+{
+    "login": {
+        "email": "Email",
+        "password": "Password",
+        "forgotPassword": "FORGOT MY PASSWORD",
+        "loginButton": "LOGIN",
+        "createAccountButton": "CREATE ACCOUNT",
+        "termsOfServiceStart": "I HAVE READ AND ACCEPTED THE",
+        "termsOfServiceMid": "TERMS",
+        "termsOfServiceEnd": "OF SERVICE",
+        "loginWithGoogle": "Login with Google",
+        "invalidEmail": "Invalid email format",
+        "passwordRequired": "Password is required",
+        "emailRequired": "Email is required",
+        "acceptTerms": "You must accept the Terms of Service to continue.",
+        "termsTitle": "Terms of Service",
+        "termsContent": "Here are the terms of service...",
+        "close": "CLOSE"
+    },
+    "validation": {
+        "invalidEmail": "Invalid email format",
+        "emailRequired": "Email is required",
+        "passwordMin": "Password must be at least 6 characters",
+        "passwordRequired": "Password is required",
+        "nameRequired": "Name is required",
+        "passwordsMustMatch": "Passwords must match",
+        "confirmPasswordRequired": "Confirm Password is required"
+    },
+    "navbar": {
+        "aboutUs": "About Us",
+        "features": "Features",
+        "signUp": "Sign Up"
+    }
+}
