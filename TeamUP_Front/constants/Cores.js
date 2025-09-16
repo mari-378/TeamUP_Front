@@ -1,8 +1,16 @@
 // a paleta de cores do aplicativo!
 
 export const Cores = {
-  preto: '#2a1a1a',
-  azul: '#0000ff',
-  verde: '#c9fd06',
-  branco: '#f9f5ec',
+  claro: {
+    fundo: 'rgb(249, 245, 236)',
+    texto: 'rgb(18, 18, 18)',
+    icones: 'rgba(0, 0, 255, 0.5)',
+    caixaTexto: 'rgba(199, 253, 6, 0.5)',
+  },
+  escuro: {
+    fundo: 'rgb(18, 18, 18)',
+    texto: 'rgb(249, 245, 236)',
+    icones: 'rgb(199, 253, 6)',
+    caixaTexto: 'rgb(199, 253, 6)',
+  },
 };
