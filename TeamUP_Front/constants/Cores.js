@@ -9,6 +9,8 @@ export const Cores = {
     caixaTexto: 'rgba(199, 253, 6, 0.5)',
     botao: 'rgb(0, 0, 255)',
     erro: 'rgb(0, 0, 255)',
+    textoSecundario: 'rgb(0, 0, 255)',
+    checkboxTexto: 'rgba(0, 0, 255, 0.5)'
   },
   dark: {
     fundo: 'rgb(18, 18, 18)',
@@ -16,7 +18,9 @@ export const Cores = {
     textoAzul: 'rgba(0, 0, 255, 0.5)',
     icones: 'rgba(0, 0, 255, 0.5)',
     caixaTexto: 'rgb(199, 253, 6)',
-    botao: 'rgb(199, 253, 6)',
+    botao: 'rgb(0, 0, 255)',
     erro: 'rgb(199, 253, 6)',
+    textoSecundario: 'rgb(199, 253, 6)',
+    checkboxTexto: 'rgba(199, 253, 6, 0.5)',
   },
 };

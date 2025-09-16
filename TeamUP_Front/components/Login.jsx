@@ -112,7 +112,7 @@ export default function Login() {
       />
 
       <TouchableOpacity onPress={() => Alert.alert('Redefinir senha', 'Funcionalidade ainda não implementada')}>
-        <Text style={[styles.forgotPassword, { color: temaAtual.textoAzul }]}>{t('login.forgotPassword')}</Text>
+        <Text style={[styles.forgotPassword, { color: temaAtual.textoSecundario }]}>{t('login.forgotPassword')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity 
@@ -123,11 +123,11 @@ export default function Login() {
 
         <Feather 
           name={aceitouTermos ? "square" : "check-square"} 
-          size={12} color={temaAtual.icones} 
+          size={12} color={temaAtual.textoSecundario} 
           style={styles.icon} />
-        <Text style={styles.checkboxText}>{t('login.termsOfServiceStart')}{' '} 
+        <Text style={[styles.checkboxText, { color: temaAtual.checkboxTexto}]}>{t('login.termsOfServiceStart')}{' '} 
           <Text 
-            style={[styles.linkText, { color: temaAtual.textoAzul }]} 
+            style={[styles.linkText, { color: temaAtual.textoSecundario }]} 
             onPress={() => setModalVisible(true)}> 
             {t('login.termsOfServiceMid')}
           </Text>
@@ -180,10 +180,10 @@ export default function Login() {
         <AntDesign 
           name="google" 
           size={20} 
-          color={temaAtual.icones} 
+          color={temaAtual.checkboxTexto}
           style={styles.icon} 
         />
-        <Text style={[styles.loginGoogleText, { color: temaAtual.textoAzul }]}>{t('login.loginWithGoogle')}</Text>
+        <Text style={[styles.loginGoogleText, { color: temaAtual.checkboxTexto }]}>{t('login.loginWithGoogle')}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -233,7 +233,6 @@ const styles = StyleSheet.create({
   },
   checkboxText: {
     marginLeft: 1,
-    color: 'rgba(0,0,255,0.5)',
     fontSize: 9,
   },
   forgotPassword: {
