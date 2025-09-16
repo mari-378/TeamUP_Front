@@ -39,7 +39,7 @@ export default function Login() {
         throw new Error('Erro ao fazer login');
       }
 
-      const result = await response.json(); // no momento não uso um resultado. talvez colocar um token depois?
+      // const result = await response.json(); no momento não uso um resultado. talvez colocar um token depois?
       Alert.alert('Sucesso', 'Login realizado com sucesso!');
     } catch (error) {
       Alert.alert('Erro', error.message);
