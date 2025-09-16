@@ -6,10 +6,12 @@ import Botao from './Botao';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '@/validation/schemas';
-import { Cores } from '../constants/Cores';
+import { useTheme } from '../contexts/ThemeContext';
 import { Ionicons, Feather, AntDesign } from '@expo/vector-icons';
 
 export default function Login() {
+  const { temaAtual } = useTheme();
+
   const { t } = useTranslation();
 
   const schema = loginSchema(t);
@@ -53,15 +55,15 @@ export default function Login() {
         name="email"
         render={({ field: { onChange, value } }) => (
           <>
-            <View style={styles.inputContainer}>
+            <View style={[styles.inputContainer, { backgroundColor: temaAtual.caixaTexto }]}>
               <Ionicons 
                 name="mail-outline" 
                 size={18} 
-                color={Cores.azul} 
+                color={temaAtual.icones} 
                 style={styles.icon} 
               />
               <TextInput
-                style={[styles.input, { outline: 'none' }]}
+                style={[styles.input, { outline: 'none', color: temaAtual.textoAzul }]}
                 placeholder={t('login.email')}
                 value={value}
                 onChangeText={onChange}
@@ -69,7 +71,7 @@ export default function Login() {
                 autoCapitalize="none"
               />
             </View>
-            {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
+            {errors.email && <Text style={[styles.error, { color: temaAtual.erro }]}>{errors.email.message}</Text>}
           </>
         )}
       />
@@ -79,15 +81,15 @@ export default function Login() {
         name="senha"
         render={({ field: { onChange, value } }) => (
           <>
-            <View style={styles.inputContainer}>
+            <View style={[styles.inputContainer, { backgroundColor: temaAtual.caixaTexto }]}>
               <Ionicons 
                 name="lock-closed-outline" 
                 size={18} 
-                color={Cores.azul} 
+                color={temaAtual.icones} 
                 style={styles.icon} 
               />
               <TextInput
-                style={[styles.input, { outline: 'none' }]}
+                style={[styles.input, { outline: 'none', color: temaAtual.textoAzul }]}
                 placeholder={t('login.password')}
                 value={value}
                 onChangeText={onChange}
@@ -100,17 +102,17 @@ export default function Login() {
                 <Ionicons 
                   name={mostrarSenha ? "eye-outline" : "eye-off-outline" } 
                   size={18} 
-                  color={Cores.azul} 
+                  color={temaAtual.icones} 
                 />
               </TouchableOpacity>
             </View>
-            {errors.senha && <Text style={styles.error}>{errors.senha.message}</Text>}
+            {errors.senha && <Text style={[styles.error, { color: temaAtual.erro }]}>{errors.senha.message}</Text>}
           </>
         )}
       />
 
       <TouchableOpacity onPress={() => Alert.alert('Redefinir senha', 'Funcionalidade ainda não implementada')}>
-        <Text style={styles.forgotPassword}>{t('login.forgotPassword')}</Text>
+        <Text style={[styles.forgotPassword, { color: temaAtual.textoAzul }]}>{t('login.forgotPassword')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity 
@@ -121,11 +123,11 @@ export default function Login() {
 
         <Feather 
           name={aceitouTermos ? "square" : "check-square"} 
-          size={12} color={Cores.azul} 
+          size={12} color={temaAtual.icones} 
           style={styles.icon} />
         <Text style={styles.checkboxText}>{t('login.termsOfServiceStart')}{' '} 
           <Text 
-            style={styles.linkText} 
+            style={[styles.linkText, { color: temaAtual.textoAzul }]} 
             onPress={() => setModalVisible(true)}> 
             {t('login.termsOfServiceMid')}
           </Text>
@@ -140,15 +142,15 @@ export default function Login() {
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
+          <View style={[styles.modalContent, { backgroundColor: temaAtual.caixaTexto }]}>
             <ScrollView>
-              <Text style={styles.modalTitle}>{t('login.termsTitle')}</Text>
-              <Text style={styles.modalText}>{t('login.termsContent')}</Text>
+              <Text style={[styles.modalTitle, { color: temaAtual.textoAzul }]}>{t('login.termsTitle')}</Text>
+              <Text style={[styles.modalText, { color: temaAtual.textoAzul }]}>{t('login.termsContent')}</Text>
             </ScrollView>
             <TouchableOpacity 
-              style={styles.closeButton} 
+              style={[styles.closeButton, { backgroundColor: temaAtual.botao }]} 
               onPress={() => setModalVisible(false)}>
-              <Text style={styles.closeButtonText}>{t('login.close')}</Text>
+              <Text style={[styles.closeButtonText, { color: temaAtual.fundo }]}>{t('login.close')}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -172,16 +174,16 @@ export default function Login() {
       />
 
       <TouchableOpacity 
-        style={styles.loginGoogle} 
+        style={[styles.loginGoogle, { borderColor: temaAtual.icones }]} 
         onPress={() => Alert.alert('Login com Google', 'Funcionalidade ainda não implementada')}
       >
         <AntDesign 
           name="google" 
           size={20} 
-          color={Cores.azul} 
+          color={temaAtual.icones} 
           style={styles.icon} 
         />
-        <Text style={styles.loginGoogleText}>{t('login.loginWithGoogle')}</Text>
+        <Text style={[styles.loginGoogleText, { color: temaAtual.textoAzul }]}>{t('login.loginWithGoogle')}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -204,9 +206,6 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     borderRadius: 50,
-    backgroundColor: Cores.verde,
-    opacity: 0.5,
-    color: Cores.azul,
     height: 40,
   },
   icon: {
@@ -215,7 +214,6 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: 40,
-    color: Cores.azul,
     minWidth: 0,
   },
   eyeButton: {
@@ -225,7 +223,6 @@ const styles = StyleSheet.create({
     width: 30,
   },
   error: {
-    color: Cores.azul,
     marginBottom: 10,
   },
   checkboxContainer: {
@@ -239,12 +236,7 @@ const styles = StyleSheet.create({
     color: 'rgba(0,0,255,0.5)',
     fontSize: 9,
   },
-  checkboxSquare: {
-    borderWidth: 1,
-    borderColor: Cores.azul,
-  },
   forgotPassword: {
-    color: Cores.azul,
     textAlign: 'center',
     fontSize: 9,
     marginTop: 10,
@@ -253,7 +245,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   linkText: {
-    color: Cores.azul,
     fontWeight: 'bold',
   },
   modalContainer: {
@@ -265,7 +256,6 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     maxWidth: '50%',
-    backgroundColor: Cores.verde,
     borderRadius: 10,
     padding: 20,
     maxHeight: '80%',
@@ -274,19 +264,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: Cores.azul,
   },
   modalText: {
     fontSize: 14,
     marginBottom: 20,
-    color: Cores.azul,
   },
   closeButton: {
-    backgroundColor: Cores.azul,
     borderRadius: 5,
   },
   closeButtonText: {
-    color: Cores.branco,
     textAlign: 'center',
     padding: 10,
     fontWeight: 'bold',
@@ -294,11 +280,9 @@ const styles = StyleSheet.create({
   loginGoogle: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: Cores.azul,
     width: '100%',
   },
   loginGoogleText: {
-    color: Cores.azul,
     textAlign: 'center',
     padding: 5,
     fontSize: 9,

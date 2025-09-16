@@ -1,10 +1,12 @@
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { Cores } from '../constants/Cores';
+import { useTheme } from '../contexts/ThemeContext';
 
-export default function Botao({ onPress, title, style }) {
+export default function Botao({ onPress, title }) {
+    const { temaAtual } = useTheme();
+
     return (
-        <TouchableOpacity onPress={onPress} style={[styles.button, style]}>
-            <Text style={styles.buttonText}>{title}</Text>
+        <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: temaAtual.botao}]}>
+            <Text style={[styles.buttonText, { color: temaAtual.fundo }]}>{title}</Text>
         </TouchableOpacity>
     );
 }
@@ -12,13 +14,11 @@ export default function Botao({ onPress, title, style }) {
 const styles = StyleSheet.create({
     button: {
         borderRadius: 50,
-        backgroundColor: Cores.azul,
         marginBottom: 15,
         width: '60%',
         alignSelf: 'center',
     },
     buttonText: {
-        color: Cores.branco,
         textAlign: 'center',
         padding: 10,
         fontWeight: 'bold',
