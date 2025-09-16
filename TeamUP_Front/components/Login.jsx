@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '@/validation/schemas';
 import { useTheme } from '../contexts/ThemeContext';
 import { Ionicons, Feather, AntDesign } from '@expo/vector-icons';
+import axios from 'axios';
 
 export default function Login() {
   const { temaAtual } = useTheme();
@@ -26,27 +27,28 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('https://teamup.com/api/login', { // só um exemplo de url, será trocada pela real depois
-        method: 'POST',
+      await axios.post('https://teamup.com/api/login', { // só um exemplo de url, será trocada pela real depois
+        email: data.email,
+        senha: data.senha,
+      },
+      {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email: data.email,
-          senha: data.senha,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Erro ao fazer login');
       }
-
-      // const result = await response.json(); no momento não uso um resultado. talvez colocar um token depois?
-      Alert.alert('Sucesso', 'Login realizado com sucesso!');
-    } catch (error) {
+    );
+    // const result = response.data; para usar num momento futuro
+    Alert.alert('Sucesso', 'Login realizado com sucesso!');
+  } catch (error) {
+    if (error.response) {
+      Alert.alert('Erro', error.response.data?.message || 'Erro no servidor');
+    } else if (error.request) {
+      Alert.alert('Erro', 'Sem resposta do servidor');
+    } else {
       Alert.alert('Erro', error.message);
     }
   };
+};
 
   return (
     <View style={styles.container}>
