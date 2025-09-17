@@ -1,26 +1,34 @@
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Text } from "react-native";
 import Cadastro from "../components/Cadastro";
 import MudarLingua from "../components/MudarLingua";
-import MudarTema from "../components/MudarTema";
-import { useTheme } from '../contexts/ThemeContext';
+import { Feather } from "@expo/vector-icons";
+import { Cores } from "../constants/Cores";
+import { useTranslation } from 'react-i18next';
 
 export default function PaginaDeCadastro() {
-  const { temaAtual } = useTheme();
+  const { t } = useTranslation();
 
   return (
-    <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
-      <View style={styles.botoes}>
-        <MudarLingua />
-        <MudarTema />
-      </View>
-      <View style={styles.logo}>
+    <View style={[styles.container, { backgroundColor: Cores.light.fundo }]}>
+      <View style={styles.head}>
+        <Feather 
+          name="arrow-left"
+          size={24}
+          color={Cores.light.texto}
+        />
         <Image 
-          source={require('../assets/images/logo.png')} 
-          style={styles.logoImg} 
-          resizeMode="contain" 
+          source={require('../assets/images/logo.png')}
+          style={styles.logoImg}
+          resizeMode="contain"
         />
       </View>
-      <View style={styles.login}>
+
+      <View style={styles.mid}>
+        <Text style={styles.text}>{t('signup.signup')}</Text>
+        <MudarLingua />
+      </View>
+
+      <View style={styles.tail}>
         <Cadastro />
       </View>
     </View>
@@ -34,26 +42,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative',
   },
-  botoes: {
-    position: 'absolute',
-    top: 40,
-    right: 40,
-    zIndex: 10,
-  },
-  logo: {
-    flex: 4,
-    justifyContent: 'center',
+  head: {
+    width: '100%',
+    height: '10%',
+    flex: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    width: '80%',
+    paddingHorizontal: 16,
+  },
+  mid: {
+    flexDirection: 'row',
+    flex: 1,
+    width: '100%',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
   },
   logoImg: {
-    width: '100%',
-    height: '100%',
+    width: '15%',
+    maxWidth: 80,
+    aspectRatio: 3,
+    height: undefined,
   },
-  login: {
+  text: {
+    marginBottom: 20,
+    fontSize: 20,
+  },
+  tail: {
     flex: 6,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-  }
+  },
 });

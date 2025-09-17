@@ -51,7 +51,6 @@ export default function Cadastro() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>{t('signup.signup')}</Text>
             <CardNome />
             <CardEmail />
             <CardSenha />
@@ -68,5 +67,5 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: '80%',
         maxWidth: 400,
-    }
+    },
 });
