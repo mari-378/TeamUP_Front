@@ -16,7 +16,8 @@
         "close": "FECHAR"
     },
     "signup": {
-        "confirmPassword": "Confirmar senha"
+        "confirmPassword": "Confirmar senha",
+        "signup": "CADASTRO"
     },
     "validation": {
         "invalidEmail": "Formato de email inválido",

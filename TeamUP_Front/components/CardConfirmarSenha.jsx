@@ -8,7 +8,7 @@ import { loginSchema } from '@/validation/schemas';
 import { useTheme } from '../contexts/ThemeContext';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function CardEmail() {
+export default function CardConfirmarSenha() {
     const { temaAtual } = useTheme();
     const { t } = useTranslation();
     const schema = loginSchema(t);

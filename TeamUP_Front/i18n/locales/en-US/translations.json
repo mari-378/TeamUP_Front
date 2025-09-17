@@ -18,7 +18,8 @@
         "close": "CLOSE"
     },
     "signup": {
-        "confirmPassword": "Confirm password"
+        "confirmPassword": "Confirm password",
+        "signup": "SIGN UP"
     },
     "validation": {
         "invalidEmail": "Invalid email format",
