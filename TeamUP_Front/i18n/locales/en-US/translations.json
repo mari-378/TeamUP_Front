@@ -17,6 +17,9 @@
         "termsContent": "Here are the terms of service...",
         "close": "CLOSE"
     },
+    "signup": {
+        "confirmPassword": "Confirm password"
+    },
     "validation": {
         "invalidEmail": "Invalid email format",
         "emailRequired": "Email is required",

@@ -15,6 +15,9 @@
         "termsContent": "Aqui estão os termos de uso...",
         "close": "FECHAR"
     },
+    "signup": {
+        "confirmPassword": "Confirmar senha"
+    },
     "validation": {
         "invalidEmail": "Formato de email inválido",
         "emailRequired": "A senha deve ter pelo menos 6 caracteres",
