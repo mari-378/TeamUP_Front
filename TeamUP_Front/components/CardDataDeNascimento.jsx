@@ -43,7 +43,7 @@ export default function CardDataDeNascimento() {
                     selectedValue={value.dia}
                     onValueChange={(val) => handleChange('dia', val)}
                   >
-                    <Picker.Item label={t('Dia')} value="" />
+                    <Picker.Item label={t('signup.day')} value="" />
                     {dias.map(d => (
                       <Picker.Item key={d} label={String(d)} value={String(d)} />
                     ))}
@@ -55,7 +55,7 @@ export default function CardDataDeNascimento() {
                     selectedValue={value.mes}
                     onValueChange={(val) => handleChange('mes', val)}
                   >
-                    <Picker.Item label={t('Mês')} value="" />
+                    <Picker.Item label={t('signup.month')} value="" />
                     {meses.map(m => (
                       <Picker.Item key={m} label={String(m)} value={String(m)} />
                     ))}
@@ -67,7 +67,7 @@ export default function CardDataDeNascimento() {
                     selectedValue={value.ano}
                     onValueChange={(val) => handleChange('ano', val)}
                   >
-                    <Picker.Item label={t('Ano')} value="" />
+                    <Picker.Item label={t('signup.year')} value="" />
                     {anos.map(y => (
                       <Picker.Item key={y} label={String(y)} value={String(y)} />
                     ))}

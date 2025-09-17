@@ -18,7 +18,11 @@
     "signup": {
         "confirmPassword": "Confirmar senha",
         "signup": "CADASTRO",
-        "name": "Nome completo"
+        "name": "Nome completo",
+        "birthDate": "Data de nascimento:",
+        "day": "Dia",
+        "month": "Mês",
+        "year": "Ano"
     },
     "validation": {
         "invalidEmail": "Formato de email inválido",

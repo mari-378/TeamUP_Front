@@ -20,7 +20,11 @@
     "signup": {
         "confirmPassword": "Confirm password",
         "signup": "SIGN UP",
-        "name": "Full name"
+        "name": "Full name",
+        "birthDate": "Birth date:",
+        "day": "Day",
+        "month": "Month",
+        "year": "Year"
     },
     "validation": {
         "invalidEmail": "Invalid email format",
