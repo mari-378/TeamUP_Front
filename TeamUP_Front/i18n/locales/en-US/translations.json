@@ -19,7 +19,8 @@
     },
     "signup": {
         "confirmPassword": "Confirm password",
-        "signup": "SIGN UP"
+        "signup": "SIGN UP",
+        "name": "Full name"
     },
     "validation": {
         "invalidEmail": "Invalid email format",

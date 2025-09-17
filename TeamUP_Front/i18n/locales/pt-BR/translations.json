@@ -17,7 +17,8 @@
     },
     "signup": {
         "confirmPassword": "Confirmar senha",
-        "signup": "CADASTRO"
+        "signup": "CADASTRO",
+        "name": "Nome completo"
     },
     "validation": {
         "invalidEmail": "Formato de email inválido",
