@@ -10,6 +10,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { Ionicons, Feather, AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 import CardEmail from './CardEmail';
+import CardSenha from './CardSenha';
 
 export default function Login() {
   const { temaAtual } = useTheme();
@@ -22,7 +23,6 @@ export default function Login() {
     resolver: yupResolver(schema),
   });
 
-  const [mostrarSenha, setMostrarSenha] = useState(false);
   const [aceitouTermos, setAceitouTermos] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -55,40 +55,7 @@ export default function Login() {
     <View style={styles.container}>
       <CardEmail />
 
-      <Controller
-        control={control}
-        name="senha"
-        render={({ field: { onChange, value } }) => (
-          <>
-            <View style={[styles.inputContainer, { backgroundColor: temaAtual.caixaTexto }]}>
-              <Ionicons 
-                name="lock-closed-outline" 
-                size={18} 
-                color={temaAtual.icones} 
-                style={styles.icon} 
-              />
-              <TextInput
-                style={[styles.input, { outline: 'none', color: temaAtual.textoAzul }]}
-                placeholder={t('login.password')}
-                value={value}
-                onChangeText={onChange}
-                secureTextEntry={!mostrarSenha}
-              />
-              <TouchableOpacity 
-                onPress={() => setMostrarSenha(!mostrarSenha)} 
-                style={styles.eyeButton}
-              >
-                <Ionicons 
-                  name={mostrarSenha ? "eye-outline" : "eye-off-outline" } 
-                  size={18} 
-                  color={temaAtual.icones} 
-                />
-              </TouchableOpacity>
-            </View>
-            {errors.senha && <Text style={[styles.error, { color: temaAtual.erro }]}>{errors.senha.message}</Text>}
-          </>
-        )}
-      />
+      <CardSenha />
 
       <TouchableOpacity onPress={() => Alert.alert('Redefinir senha', 'Funcionalidade ainda não implementada')}>
         <Text style={[styles.forgotPassword, { color: temaAtual.textoSecundario }]}>{t('login.forgotPassword')}</Text>
@@ -176,12 +143,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '80%',
     maxWidth: 400,
-  },
-  eyeButton: {
-    paddingHorizontal: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 30,
   },
   checkboxContainer: {
     flexDirection: 'row',
