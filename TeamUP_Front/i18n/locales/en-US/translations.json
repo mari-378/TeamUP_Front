@@ -25,7 +25,10 @@
         "day": "Day",
         "month": "Month",
         "year": "Year",
-        "gender": "Gender:"
+        "gender": "Gender:",
+        "female": "F",
+        "male": "M",
+        "other": "Other"
     },
     "validation": {
         "invalidEmail": "Invalid email format",
