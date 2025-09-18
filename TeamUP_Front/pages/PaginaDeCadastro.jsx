@@ -77,7 +77,8 @@ export default function PaginaDeCadastro() {
           title={t('signup.sign')}
           onPress={() => {
             handleSubmit(onSubmit)();
-          }}   
+          }}
+        
         />
       </>
 
