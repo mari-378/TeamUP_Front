@@ -28,7 +28,9 @@
         "gender": "Gender:",
         "female": "F",
         "male": "M",
-        "other": "Other"
+        "other": "Other",
+        "message": "By pressing Sign Up, you accept our Terms, Privacy Policy and Cookie Policy.",
+        "sign": "SIGN UP"
     },
     "validation": {
         "invalidEmail": "Invalid email format",

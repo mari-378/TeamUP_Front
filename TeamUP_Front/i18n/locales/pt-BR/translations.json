@@ -26,7 +26,9 @@
         "gender": "Gênero:",
         "female": "F",
         "male": "M",
-        "other": "Outro"
+        "other": "Outro",
+        "message": "Ao clicar em Cadastrar, você aceita nossos Termos, Política de Privacidade e Política de Cookies.",
+        "sign": "CADASTRAR"
     },
     "validation": {
         "invalidEmail": "Formato de email inválido",
