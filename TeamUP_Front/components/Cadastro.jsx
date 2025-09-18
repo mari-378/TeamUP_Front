@@ -6,6 +6,7 @@ import CardEmail from './CardEmail';
 import CardSenha from './CardSenha';
 import CardConfirmarSenha from './CardConfirmarSenha';
 import CardDataDeNascimento from './CardDataDeNascimento';
+import CardGenero from './CardGenero';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '@/validation/schemas';
 import { useTranslation } from 'react-i18next';
@@ -56,7 +57,10 @@ export default function Cadastro() {
             <CardEmail />
             <CardSenha />
             <CardConfirmarSenha />
+            <Text style={styles.titulo}>{t('signup.birthDate')}</Text>
             <CardDataDeNascimento />
+            <Text style={styles.titulo}>{t('signup.gender')}</Text>
+            <CardGenero />
         </View>
     );
 };

@@ -22,7 +22,8 @@
         "birthDate": "Data de nascimento:",
         "day": "Dia",
         "month": "Mês",
-        "year": "Ano"
+        "year": "Ano",
+        "gender": "Gênero:"
     },
     "validation": {
         "invalidEmail": "Formato de email inválido",

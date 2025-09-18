@@ -24,7 +24,8 @@
         "birthDate": "Birth date:",
         "day": "Day",
         "month": "Month",
-        "year": "Year"
+        "year": "Year",
+        "gender": "Gender:"
     },
     "validation": {
         "invalidEmail": "Invalid email format",

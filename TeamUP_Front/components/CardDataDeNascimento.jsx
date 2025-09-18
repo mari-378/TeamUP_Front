@@ -37,7 +37,6 @@ export default function CardDataDeNascimento() {
 
                     return (
                         <View style={styles.container}>
-                            <Text>{t('signup.birthDate')}</Text>
                             <View style={styles.linha}>
                                 <View style={[styles.caixaDeEscolha, { borderColor: Cores.light.botao }]}>
                                 <Picker
