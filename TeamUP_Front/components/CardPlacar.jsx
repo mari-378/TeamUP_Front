@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
         maxHeight: '200',
     },
     textoTime: {
-        lineHeight: 1.6,
+        paddingLeft: 10,
+        fontSize: 16,
     },
     placar: {
         width: '90%',    
