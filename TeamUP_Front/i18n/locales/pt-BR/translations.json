@@ -39,6 +39,9 @@
         "passwordsMustMatch": "As senhas devem coincidir",
         "confirmPasswordRequired": "A confirmação de senha é obrigatória"
     },
+    "score": {
+        "name": "Time 1"
+    },
     "navbar": {
         "aboutUs": "Sobre Nós",
         "features": "Funcionalidades",

@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
 import CardPlacar from './CardPlacar';
+import "@/i18n";
+import { useTranslation } from 'react-i18next';
 
 export default function BotaoAlterarPlacar() {
     const [pontos, setPontos] = useState(0);
     const { temaAtual } = useTheme();
+    const { t } = useTranslation();
 
     function aumentarPontos(valor) {
         setPontos(pontos + valor);
@@ -19,8 +22,8 @@ export default function BotaoAlterarPlacar() {
 
     return (
         <View style={styles.container}>
-            <CardPlacar pontuacao={pontos} />
-
+            <CardPlacar time={t('score.name')} pontuacao={pontos} />
+            
             <View style={styles.containerBotoes}>
                 <TouchableOpacity
                     onPress={() => aumentarPontos(1)} 

@@ -41,6 +41,9 @@
         "passwordsMustMatch": "Passwords must match",
         "confirmPasswordRequired": "Confirm Password is required"
     },
+    "score": {
+        "name": "Team 1"
+    },
     "navbar": {
         "aboutUs": "About Us",
         "features": "Features",
