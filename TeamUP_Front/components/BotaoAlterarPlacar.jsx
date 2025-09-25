@@ -78,11 +78,16 @@ export default function BotaoAlterarPlacar() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        alignItems: 'center',
+        gap: 20,
     },
     containerBotoes: {
         flexDirection: 'row',
         gap: 10,
         margin: 10,
+    },
+    cardPlacar: {
+        width: '80%'
     },
     botao: {
         width: 30,
