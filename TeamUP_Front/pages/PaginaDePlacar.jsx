@@ -26,6 +26,7 @@ export default function PaginaDePlacar() {
             <Text style={styles.resultado}>{t('score.result')}</Text>
 
             <PlacarSalvo />
+            <PlacarSalvo />
             
             <Botao
                 title={t('score.reset')}
@@ -37,7 +38,7 @@ export default function PaginaDePlacar() {
 
 const styles = StyleSheet.create({
     container: {
-        gap: 15,
+        gap: 20,
     },
     titulo: {
         fontSize: 30,
@@ -45,9 +46,6 @@ const styles = StyleSheet.create({
     },
     containerPlacar: {
         flexDirection: 'row',
-    },
-    botao: {
-        
     },
     resultado: {
         fontSize: 20,
