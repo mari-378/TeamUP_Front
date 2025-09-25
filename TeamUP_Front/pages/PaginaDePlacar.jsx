@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { View, Text, StyleSheet } from 'react-native';
 import BotaoAlterarPlacar from '../components/BotaoAlterarPlacar';
 import Botao from '../components/Botao';
+import PlacarSalvo from '../components/PlacarSalvo';
 
 export default function PaginaDePlacar() {
     const { temaAtual } = useTheme();
@@ -24,6 +25,8 @@ export default function PaginaDePlacar() {
             />
             <Text style={styles.resultado}>{t('score.result')}</Text>
 
+            <PlacarSalvo />
+            
             <Botao
                 title={t('score.reset')}
                 style={styles.botao}
