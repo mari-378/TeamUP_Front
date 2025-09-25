@@ -22,7 +22,9 @@ export default function BotaoAlterarPlacar() {
 
     return (
         <View style={styles.container}>
-            <CardPlacar time={t('score.name')} pontuacao={pontos} />
+            <View style={styles.cardPlacar}>
+                <CardPlacar time={t('score.name')} pontuacao={pontos} />
+            </View>
             
             <View style={styles.containerBotoes}>
                 <TouchableOpacity

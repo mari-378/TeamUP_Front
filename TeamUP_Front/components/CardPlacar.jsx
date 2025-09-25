@@ -18,10 +18,10 @@ export default function CardPlacar( {time, pontuacao} ) {
 
 const styles = StyleSheet.create({
     container: {
-        width: '25%',
-        height: '20%',
-        maxWidth: 350,
-        maxHeight: '200',
+        width: '100%',
+        height: '100%',
+        maxWidth: 200,
+        maxHeight: 200,
     },
     textoTime: {
         paddingLeft: 10,
