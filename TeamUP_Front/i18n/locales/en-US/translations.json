@@ -42,6 +42,7 @@
         "confirmPasswordRequired": "Confirm Password is required"
     },
     "score": {
+        "score": "Score",
         "name": "Team 1"
     },
     "navbar": {

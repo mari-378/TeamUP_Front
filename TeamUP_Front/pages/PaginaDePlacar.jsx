@@ -12,6 +12,7 @@ export default function PaginaDePlacar() {
 
     return (
         <View style={styles.container}>
+            <Text>{t('score.score')}</Text>
             <View style={styles.containerPlacar}>
                 <BotaoAlterarPlacar />
                 <BotaoAlterarPlacar />
@@ -27,9 +28,12 @@ export default function PaginaDePlacar() {
 
 const styles = StyleSheet.create({
     container: {
-        
+        gap: 15,
     },
     containerPlacar: {
         flexDirection: 'row',
     },
+    botao: {
+        
+    }
 });
