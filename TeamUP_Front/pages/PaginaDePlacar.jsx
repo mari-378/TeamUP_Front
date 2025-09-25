@@ -18,8 +18,14 @@ export default function PaginaDePlacar() {
                 <BotaoAlterarPlacar />
             </View>
             <Botao 
-                title={"Salvar placar"}
+                title={t('score.save')}
                 // onPress={}
+                style={styles.botao}
+            />
+            <Text style={styles.resultado}>{t('score.result')}</Text>
+
+            <Botao
+                title={t('score.reset')}
                 style={styles.botao}
             />
         </View>
@@ -39,5 +45,10 @@ const styles = StyleSheet.create({
     },
     botao: {
         
+    },
+    resultado: {
+        fontSize: 20,
+        paddingLeft: 30,
+        paddingTop: 20,
     }
 });

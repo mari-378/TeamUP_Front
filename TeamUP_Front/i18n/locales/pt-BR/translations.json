@@ -41,7 +41,10 @@
     },
     "score": {
         "score": "Placar",
-        "name": "Time 1"
+        "name": "Time 1",
+        "result": "Resultados",
+        "save": "Salvar placar",
+        "reset": "Resetar placar"
     },
     "navbar": {
         "aboutUs": "Sobre Nós",

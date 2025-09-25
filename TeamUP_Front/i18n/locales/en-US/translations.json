@@ -43,7 +43,10 @@
     },
     "score": {
         "score": "Score",
-        "name": "Team 1"
+        "name": "Team 1",
+        "save": "Save score",
+        "reset": "Reset score",
+        "result": "Results"
     },
     "navbar": {
         "aboutUs": "About Us",
