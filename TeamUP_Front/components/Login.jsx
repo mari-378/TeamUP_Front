@@ -8,9 +8,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '@/validation/schemas';
 import { useTheme } from '../contexts/ThemeContext';
 import { Feather, AntDesign } from '@expo/vector-icons';
-import axios from 'axios';
 import CardEmail from './CardEmail';
 import CardSenha from './CardSenha';
+import axios from 'axios';
 
 export default function Login() {
   const { temaAtual } = useTheme();
@@ -19,7 +19,7 @@ export default function Login() {
 
   const schema = loginSchema(t);
 
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { control, getValues, formState: { errors }, trigger } = useForm({
     resolver: yupResolver(schema),
     mode: 'onChange',
     defaultValues: {
@@ -31,31 +31,37 @@ export default function Login() {
   const [aceitouTermos, setAceitouTermos] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const onSubmit = async (data) => {
-  try {
-    const response = await fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: data.email,
-        senha: data.password,
-      }),
-    });
+  const enviarForm = async () => {
+    const valido = await trigger();
+    if (!valido) return;
 
-    if (!response.ok) {
-      const errData = await response.json();
-      throw new Error(errData.message || 'Erro no servidor');
+    const data = getValues();
+
+    if (!aceitouTermos) {
+      // Alert.alert('Termos de uso', 'Você deve aceitar os Termos de uso antes de continuar.');
+      return;
     }
 
-    const result = await response.json();
-    console.log('Resposta do servidor', result);
-    Alert.alert('Sucesso', 'Login realizado com sucesso!');
-  } catch (error) {
-    Alert.alert('Erro', error.message);
+    try {
+      const response = axios.post('http://localhost:3000/login', {
+        email: data.email,
+        senha: data.password,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('Resposta do servidor', response.data);
+     } catch (error) {
+      if (error.response) {
+        Alert.alert('Erro', error.response.data?.message || 'Erro no servidor');
+      } else if (error.request) {
+        Alert.alert('Erro', 'Sem resposta do servidor');
+      } else {
+        Alert.alert('Erro', error.message);
+      }
+    }
   }
-};
 
   return (
     <View style={styles.container}>
@@ -74,7 +80,7 @@ export default function Login() {
       >
 
         <Feather 
-          name={aceitouTermos ? "square" : "check-square"} 
+          name={aceitouTermos ? "check-square" : "square"} 
           size={12} color={temaAtual.textoSecundario} 
           style={styles.icon} />
         <Text style={[styles.checkboxText, { color: temaAtual.checkboxTexto}]}>{t('login.termsOfServiceStart')}{' '} 
@@ -110,16 +116,7 @@ export default function Login() {
 
       <Botao
         title={t('login.loginButton')}
-        onPress={handleSubmit((data) => {
-          console.log("handleSubmit chamado", data);
-
-          if (!aceitouTermos) {
-            Alert.alert('Termos de uso', 'Você deve aceitar os Termos de uso para continuar.');
-            return;
-          }
-
-          onSubmit(data);
-        })}
+        onPress={enviarForm}
       />
 
       <Botao
