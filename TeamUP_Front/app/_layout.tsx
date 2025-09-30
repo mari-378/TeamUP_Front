@@ -5,7 +5,7 @@ export default function RootLayout() {
   return (
     <ThemeProvider>
       <Stack >
-        <Stack.Screen name='login' />
+        <Stack.Screen name='index' />
         <Stack.Screen name='cadastro' />
       </Stack>
     </ThemeProvider>
