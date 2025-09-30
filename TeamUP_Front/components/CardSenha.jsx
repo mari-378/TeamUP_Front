@@ -2,25 +2,19 @@ import React, { useState } from 'react';
 import { TextInput, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import "@/i18n";
 import { useTranslation } from 'react-i18next';
-import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from '@/validation/schemas';
+import { Controller } from 'react-hook-form';
 import { useTheme } from '../contexts/ThemeContext';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function CardEmail() {
+export default function CardEmail({ control, errors }) {
     const { temaAtual } = useTheme();
     const { t } = useTranslation();
-    const schema = loginSchema(t);
-    const { control, formState: { errors } } = useForm({
-        resolver: yupResolver(schema),
-    });
     const [mostrarSenha, setMostrarSenha] = useState(false);
 
     return (
         <Controller
             control={control}
-            name='senha'
+            name='password'
             render={({ field: { onChange, value } }) => (
                 <>
                     <View style={[styles.inputContainer, { backgroundColor: temaAtual.caixaTexto }]}>
@@ -49,7 +43,7 @@ export default function CardEmail() {
                             />
                         </TouchableOpacity>
                     </View>
-                    {errors.senha && <Text style={[styles.error, { color: temaAtual.error }]}>{errors.senha.message}</Text>}
+                    {errors.password && <Text style={[styles.error, { color: temaAtual.error }]}>{errors.password.message}</Text>}
                 </>
             )}
         />

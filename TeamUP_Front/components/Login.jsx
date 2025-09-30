@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Alert, TouchableOpacity, Modal, ScrollView} from 'react-native';
+import { View, Text, StyleSheet, Alert, TouchableOpacity, Modal, ScrollView} from 'react-native';
 import "@/i18n";
 import { useTranslation } from 'react-i18next';
 import Botao from './Botao';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '@/validation/schemas';
 import { useTheme } from '../contexts/ThemeContext';
-import { Ionicons, Feather, AntDesign } from '@expo/vector-icons';
+import { Feather, AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 import CardEmail from './CardEmail';
 import CardSenha from './CardSenha';
@@ -21,41 +21,47 @@ export default function Login() {
 
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
+    mode: 'onChange',
+    defaultValues: {
+      email: '',
+      password: '',
+    }
   });
 
   const [aceitouTermos, setAceitouTermos] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
   const onSubmit = async (data) => {
-    try {
-      await axios.post('https://teamup.com/api/login', { // só um exemplo de url, será trocada pela real depois
-        email: data.email,
-        senha: data.senha,
+  try {
+    const response = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    // const result = response.data; para usar num momento futuro
+      body: JSON.stringify({
+        email: data.email,
+        senha: data.password,
+      }),
+    });
+
+    if (!response.ok) {
+      const errData = await response.json();
+      throw new Error(errData.message || 'Erro no servidor');
+    }
+
+    const result = await response.json();
+    console.log('Resposta do servidor', result);
     Alert.alert('Sucesso', 'Login realizado com sucesso!');
   } catch (error) {
-    if (error.response) {
-      Alert.alert('Erro', error.response.data?.message || 'Erro no servidor');
-    } else if (error.request) {
-      Alert.alert('Erro', 'Sem resposta do servidor');
-    } else {
-      Alert.alert('Erro', error.message);
-    }
-  };
+    Alert.alert('Erro', error.message);
+  }
 };
 
   return (
     <View style={styles.container}>
-      <CardEmail />
+      <CardEmail control={control} errors={errors} />
 
-      <CardSenha />
+      <CardSenha control={control} errors={errors} />
 
       <TouchableOpacity onPress={() => Alert.alert('Redefinir senha', 'Funcionalidade ainda não implementada')}>
         <Text style={[styles.forgotPassword, { color: temaAtual.textoSecundario }]}>{t('login.forgotPassword')}</Text>
@@ -102,15 +108,18 @@ export default function Login() {
         </View>
       </Modal>
 
-      <Botao 
-        title={t('login.loginButton')} 
-        onPress={() => {
-        if (!aceitouTermos) {
-          Alert.alert('Termos de uso', 'Você deve aceitar os termos de uso para continuar.');
-          return;
-        }
-        handleSubmit(onSubmit)();
-      }}
+      <Botao
+        title={t('login.loginButton')}
+        onPress={handleSubmit((data) => {
+          console.log("handleSubmit chamado", data);
+
+          if (!aceitouTermos) {
+            Alert.alert('Termos de uso', 'Você deve aceitar os Termos de uso para continuar.');
+            return;
+          }
+
+          onSubmit(data);
+        })}
       />
 
       <Botao

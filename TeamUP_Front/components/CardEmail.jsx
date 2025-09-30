@@ -2,19 +2,13 @@ import React from 'react';
 import { TextInput, View, Text, StyleSheet } from 'react-native';
 import "@/i18n";
 import { useTranslation } from 'react-i18next';
-import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from '@/validation/schemas';
+import { Controller } from 'react-hook-form';
 import { useTheme } from '../contexts/ThemeContext';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function CardEmail() {
+export default function CardEmail({ control, errors }) {
     const { temaAtual } = useTheme(); 
     const { t } = useTranslation();
-    const schema = loginSchema(t);
-    const { control, formState: { errors } } = useForm({
-        resolver: yupResolver(schema),
-    });
 
     return (
         <Controller
@@ -34,7 +28,7 @@ export default function CardEmail() {
                             placeholder={t('login.email')}
                             value={value}
                             onChangeText={onChange}
-                            keyboardType='email-adress'
+                            keyboardType='email-address'
                             autoCapitalize='none'
                         />
                     </View>
