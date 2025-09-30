@@ -44,7 +44,7 @@
     "score": {
         "score": "Score",
         "name": "Team 1",
-        "Sav "save":e score",
+        "save":"Save score",
         "reset": "Reset score",
         "result": "Results"
     },

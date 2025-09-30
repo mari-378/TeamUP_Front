@@ -1,7 +1,7 @@
-import PaginaDeCadastro from "../pages/PaginaDeCadastro";
+import PaginaDeCadastro from '../pages/PaginaDeCadastro';
 
 export default function Cadastro() {
   return (
     <PaginaDeCadastro />
-  );
-}
+  )
+};

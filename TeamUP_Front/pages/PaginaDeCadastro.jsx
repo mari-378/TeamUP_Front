@@ -9,10 +9,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '@/validation/schemas';
 import axios from 'axios';
+import { useRouter } from 'expo-router';
 
 export default function PaginaDeCadastro() {
   const { t } = useTranslation();
   const schema = loginSchema(t);
+  const router = useRouter();
   const { handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
@@ -61,7 +63,14 @@ export default function PaginaDeCadastro() {
 
       <View style={styles.mid}>
         <Text style={styles.text}>{t('signup.signup')}</Text>
-        <MudarLingua />
+        <View style={styles.botao}>
+          <MudarLingua />
+          <Botao
+            title={'>'}
+            onPress={() => router.push('/placar')}
+          />
+        </View>
+        
       </View>
 
       <View style={styles.tail}>
@@ -110,6 +119,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 30,
     gap: '30%',
+  },
+  botao: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 20,
   },
   logoImg: {
     width: '50%',

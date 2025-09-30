@@ -2,16 +2,23 @@ import { View, StyleSheet, Image } from "react-native";
 import Login from "../components/Login";
 import MudarLingua from "../components/MudarLingua";
 import MudarTema from "../components/MudarTema";
+import Botao from "../components/Botao";
 import { useTheme } from '../contexts/ThemeContext';
+import { useRouter } from 'expo-router';
 
 export default function PaginaDeLogin() {
   const { temaAtual } = useTheme();
+  const router = useRouter();
 
   return (
     <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
       <View style={styles.botoes}>
         <MudarLingua />
         <MudarTema />
+        <Botao
+          title={'>'}
+          onPress={() => router.push('/cadastro')}
+        />
       </View>
       <View style={styles.logo}>
         <Image 
