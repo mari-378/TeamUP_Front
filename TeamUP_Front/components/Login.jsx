@@ -19,7 +19,7 @@ export default function Login() {
 
   const schema = loginSchema(t);
 
-  const { control, getValues, formState: { errors }, trigger } = useForm({
+  const { control, formState: { errors }, handleSubmit } = useForm({
     resolver: yupResolver(schema),
     mode: 'onChange',
     defaultValues: {
@@ -31,37 +31,27 @@ export default function Login() {
   const [aceitouTermos, setAceitouTermos] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const enviarForm = async () => {
-    const valido = await trigger();
-    if (!valido) return;
-
-    const data = getValues();
-
-    if (!aceitouTermos) {
-      // Alert.alert('Termos de uso', 'Você deve aceitar os Termos de uso antes de continuar.');
-      return;
-    }
-
+  const onSubmit = async (data) => {
     try {
-      const response = axios.post('http://localhost:3000/login', {
+      await axios.post('http://localhost:3000/login', {
         email: data.email,
         senha: data.password,
-      }, {
+      },
+      {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      console.log('Resposta do servidor', response.data);
-     } catch (error) {
+    } catch (error) {
       if (error.response) {
-        Alert.alert('Erro', error.response.data?.message || 'Erro no servidor');
+        console.log('Erro no servidor', error.response.data?.message);
       } else if (error.request) {
-        Alert.alert('Erro', 'Sem resposta do servidor');
+        console.log('Sem resposta do servidor');
       } else {
-        Alert.alert('Erro', error.message);
+        console.log('Erro', error.message);
       }
-    }
-  }
+    };
+  };
 
   return (
     <View style={styles.container}>
@@ -116,7 +106,12 @@ export default function Login() {
 
       <Botao
         title={t('login.loginButton')}
-        onPress={enviarForm}
+        onPress={() => {
+          if (!aceitouTermos) {
+            return;
+          }
+          handleSubmit(onSubmit)();
+        }}
       />
 
       <Botao
