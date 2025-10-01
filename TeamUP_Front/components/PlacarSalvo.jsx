@@ -2,19 +2,19 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
 
-export default function PlacarSalvo() {
+export default function PlacarSalvo({ periodo, pontuacao }) {
     const { temaAtual } = useTheme();
 
     return (
         <View style={styles.container}>
             <View style={[styles.periodoAtual, { backgroundColor: temaAtual.caixaTexto }]}>
                 <View style={styles.circulo}>
-                    <Text style={{ color: 'white' }}>1</Text>
+                    <Text style={{ color: 'white' }}>{periodo}</Text>
                 </View>
                 <Text>Período</Text>
             </View>
             <View style={styles.pontuacao}>
-                <Text style={styles.textoPontuacao}>1 x 0</Text>
+                <Text style={styles.textoPontuacao}>{pontuacao}</Text>
             </View>
         </View>
     )

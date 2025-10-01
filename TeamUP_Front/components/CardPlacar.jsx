@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     placar: {
-        width: '90%',    
-        height: '75%',
-        justifyContent: 'center',
+        width: '100%',
+        // height: '75%',
+        // justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
-        margin: 10,
+        // margin: 10,
     },
     textoContainer: {
         fontSize: 40,

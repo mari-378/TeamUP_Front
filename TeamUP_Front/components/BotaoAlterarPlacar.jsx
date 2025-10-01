@@ -87,7 +87,8 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     cardPlacar: {
-        width: '80%'
+        width: '80%',
+        maxWidth: 200,
     },
     botao: {
         width: 30,

@@ -6,14 +6,19 @@ import { View, Text, StyleSheet } from 'react-native';
 import BotaoAlterarPlacar from '../components/BotaoAlterarPlacar';
 import Botao from '../components/Botao';
 import PlacarSalvo from '../components/PlacarSalvo';
+import MudarTema from '@/components/MudarTema';
 
 export default function PaginaDePlacar() {
     const { temaAtual } = useTheme();
     const { t } = useTranslation();
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.titulo}>{t('score.score')}</Text>
+        <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
+            <View style={styles.head}>
+                <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('score.score')}</Text>
+                <MudarTema />
+            </View>
+            
             <View style={styles.containerPlacar}>
                 <BotaoAlterarPlacar />
                 <BotaoAlterarPlacar />
@@ -21,7 +26,7 @@ export default function PaginaDePlacar() {
             <Botao 
                 title={t('score.save')}
                 // onPress={}
-                style={styles.botao}
+                style={[styles.botao]}
             />
             <Text style={styles.resultado}>{t('score.result')}</Text>
 
@@ -39,6 +44,10 @@ export default function PaginaDePlacar() {
 const styles = StyleSheet.create({
     container: {
         gap: 20,
+    },
+    head: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     titulo: {
         fontSize: 30,
