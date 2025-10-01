@@ -31,19 +31,19 @@ export const signUpSchema = (t: any) =>
       .object({
         day: yup
           .number()
-          .typeError(t('validation.dayRequired'))
+          .nullable()
           .required(t('validation.dayRequired'))
           .min(1, t('validation.invalidDay'))
           .max(31, t('validation.invalidDay')),
         month: yup
           .number()
-          .typeError(t('validation.monthRequired'))
+          .nullable()
           .required(t('validation.monthRequired'))
           .min(1, t('validation.invalidMonth'))
           .max(12, t('validation.invalidMonth')),
         year: yup
           .number()
-          .typeError(t('validation.yearRequired'))
+          .nullable()
           .required(t('validation.yearRequired'))
           .min(1900, t('validation.invalidYear'))
           .max(2024, t('validation.invalidYear')),

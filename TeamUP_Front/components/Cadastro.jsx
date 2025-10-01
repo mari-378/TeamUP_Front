@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Alert, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import CardNome from './CardNome';
 import CardEmail from './CardEmail';
 import CardSenha from './CardSenha';
@@ -22,24 +22,29 @@ export default function Cadastro() {
         resolver: yupResolver(schema),
         mode: 'onChange',
         defaultValues: {
+            name: '',
             email: '',
             password: '',
             confirmPassword: '',
-            birthDate: { day: '', month: '', year: '' },
-            gender: ''
+            birthDate: { day: null, month: null, year: null },
+            gender: '',
         }
     });
 
     const onSubmit = async (data) => {
-        try {
-            const formattedDate = `${data.birthDate.year}-${data.birthDate.month}-${data.birthDate.day}`;
+        console.log('submit', data);
 
-            await axios.post('http://localhost:3000/cadastro', {
-                email: data.email,
-                senha: data.password,
-                dataDeNascimento: formattedDate,
-                genero: data.gender,
-            }, {
+        const payload = {
+            email: data.email,
+            senha: data.password,
+            dataDeNascimento: data.birthDate,
+            genero: data.gender,
+        };
+        console.log('Dados a serem enviados', payload)
+
+        try {
+
+            await axios.post('http://localhost:3000/cadastro', payload, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -68,7 +73,8 @@ export default function Cadastro() {
             <Botao 
                 title={t('signup.signup')}
                 onPress={() => {
-                    handleSubmit(onSubmit)();
+                    console.log('chamando função')
+                    handleSubmit((data) => onSubmit(data), (errs) => console.log('erros do form', errs)) ();
                 }}
             />
         </View>

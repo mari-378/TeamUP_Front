@@ -19,7 +19,7 @@ export default function CardGenero({ control, errors }) {
         <View style={styles.container}>
             <Controller
                 control={control}
-                name='genero'
+                name='gender'
                 defaultValue=''
                 render={({ field }) => {
                     const { value, onChange } = field;
@@ -33,7 +33,10 @@ export default function CardGenero({ control, errors }) {
                                         <TouchableOpacity
                                             key={opcao.value}
                                             style={styles.cartao}
-                                            onPress={() => onChange(opcao.value)}
+                                            onPress={() => {
+                                                console.log('genero', opcao.value)
+                                                onChange(opcao.value);
+                                            }}
                                         >
                                             <View style={styles.conteudo}>
                                                 <Text style={styles.texto}>{opcao.label}</Text>
@@ -52,8 +55,8 @@ export default function CardGenero({ control, errors }) {
                                 })}
                             </View>
 
-                            {errors.genero && (
-                                <Text style={styles.error}>{t(errors.genero.message)}</Text>
+                            {errors.gender && (
+                                <Text style={styles.error}>{t(errors.gender.message)}</Text>
                             )}
                         </>
                     );

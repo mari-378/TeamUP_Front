@@ -14,7 +14,7 @@ export default function CardConfirmarSenha({ control, errors }) {
     return (
         <Controller
             control={control}
-            name='confirmarSenha'
+            name='confirmPassword'
             defaultValue=''
             render={({ field: { onChange, value } }) => (
                 <>
@@ -44,7 +44,7 @@ export default function CardConfirmarSenha({ control, errors }) {
                             />
                         </TouchableOpacity>
                     </View>
-                    {errors.senha && <Text style={[styles.error, { color: temaAtual.error }]}>{errors.senha.message}</Text>}
+                    {errors.confirmPassword && <Text style={[styles.error, { color: temaAtual.error }]}>{errors.confirmPassword.message}</Text>}
                 </>
             )}
         />

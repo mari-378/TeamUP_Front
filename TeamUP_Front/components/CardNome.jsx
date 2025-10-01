@@ -13,7 +13,7 @@ export default function CardEmail({ control, errors }) {
     return (
         <Controller
             control={control}
-            name='nome'
+            name='name'
             defaultValue=''
             render={({ field: { onChange, value } }) => (
                 <>
