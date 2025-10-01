@@ -4,14 +4,12 @@ import MudarLingua from "../components/MudarLingua";
 import Botao from "../components/Botao";
 // import { Feather } from "@expo/vector-icons";
 import { useTranslation } from 'react-i18next';
-import { useRouter } from 'expo-router';
 import MudarTema from "@/components/MudarTema";
 import { useTheme } from '../contexts/ThemeContext';
 
 export default function PaginaDeCadastro() {
   const { temaAtual } = useTheme();
   const { t } = useTranslation();
-  const router = useRouter();
 
   return (
     <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
@@ -33,10 +31,6 @@ export default function PaginaDeCadastro() {
         <View style={styles.botao}>
           <MudarTema />
           <MudarLingua />
-          <Botao
-            title={'>'}
-            onPress={() => router.push('/placar')}
-          />
         </View>
         
       </View>
@@ -90,6 +84,7 @@ const styles = StyleSheet.create({
   },
   text: {
     marginBottom: 20,
+    marginTop: 20,
     fontSize: 20,
   },
   tail: {

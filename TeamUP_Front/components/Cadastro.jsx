@@ -11,6 +11,7 @@ import { signUpSchema } from '@/validation/schemas';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { useTheme } from '../contexts/ThemeContext';
+import { useRouter } from 'expo-router';
 import axios from 'axios';
 import Botao from './Botao';
 
@@ -18,6 +19,7 @@ export default function Cadastro() {
     const { t } = useTranslation();
     const { temaAtual } = useTheme();
     const schema = signUpSchema(t);
+    const router = useRouter();
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
@@ -44,12 +46,12 @@ export default function Cadastro() {
         console.log('Dados a serem enviados', payload)
 
         try {
-
             await axios.post('http://localhost:3000/cadastro', payload, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-            });   
+            });
+            router.push('/placar');
         } catch (error) {
             if (error.response) {
                 console.log('Erro no servidor', error.response.data?.message);
@@ -74,7 +76,6 @@ export default function Cadastro() {
             <Botao 
                 title={t('signup.signup')}
                 onPress={() => {
-                    console.log('chamando função')
                     handleSubmit((data) => onSubmit(data), (errs) => console.log('erros do form', errs)) ();
                 }}
             />
