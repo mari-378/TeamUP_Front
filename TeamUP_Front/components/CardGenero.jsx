@@ -69,6 +69,7 @@ export default function CardGenero({ control, errors }) {
 const styles = StyleSheet.create({
     container: {
         marginVertical: 10,
+        marginBottom: 25,
     },
     rotulo: {
         marginBottom: 5,

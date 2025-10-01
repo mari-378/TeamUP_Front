@@ -39,7 +39,7 @@ export default function PaginaDeCadastro() {
       </View>
 
       <>
-        <Text style={{ color: temaAtual.texto }}>{t('signup.message')}</Text>
+        <Text style={[styles.textoFooter, { color: temaAtual.texto }]}>{t('signup.message')}</Text>
       </>
     </View>
   );
@@ -91,5 +91,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+  },
+  textoFooter: {
+    marginBottom: 40,
+    fontSize: 10,
   },
 });
