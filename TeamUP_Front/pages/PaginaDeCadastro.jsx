@@ -1,18 +1,20 @@
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import Cadastro from "../components/Cadastro";
 import MudarLingua from "../components/MudarLingua";
 import Botao from "../components/Botao";
 // import { Feather } from "@expo/vector-icons";
-import { Cores } from "../constants/Cores";
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
+import MudarTema from "@/components/MudarTema";
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function PaginaDeCadastro() {
+  const { temaAtual } = useTheme();
   const { t } = useTranslation();
   const router = useRouter();
 
   return (
-    <View style={[styles.container, { backgroundColor: Cores.light.fundo }]}>
+    <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
       {/* <View style={styles.head}>
         <Feather 
           name="arrow-left"
@@ -27,8 +29,9 @@ export default function PaginaDeCadastro() {
       </View> */}
 
       <View style={styles.mid}>
-        <Text style={styles.text}>{t('signup.signup')}</Text>
+        <Text style={[styles.text, { color: temaAtual.texto }]}>{t('signup.signup')}</Text>
         <View style={styles.botao}>
+          <MudarTema />
           <MudarLingua />
           <Botao
             title={'>'}
@@ -43,7 +46,7 @@ export default function PaginaDeCadastro() {
       </View>
 
       <>
-        <Text>{t('signup.message')}</Text>
+        <Text style={{ color: temaAtual.texto }}>{t('signup.message')}</Text>
       </>
     </View>
   );
