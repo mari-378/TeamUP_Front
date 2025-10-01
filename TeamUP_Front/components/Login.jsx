@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '@/validation/schemas';
 import { useTheme } from '../contexts/ThemeContext';
+import { useRouter } from 'expo-router';
 import { Feather, AntDesign } from '@expo/vector-icons';
 import CardEmail from './CardEmail';
 import CardSenha from './CardSenha';
@@ -14,10 +15,9 @@ import axios from 'axios';
 
 export default function Login() {
   const { temaAtual } = useTheme();
-
   const { t } = useTranslation();
-
   const schema = loginSchema(t);
+  const router = useRouter();
 
   const { control, formState: { errors }, handleSubmit } = useForm({
     resolver: yupResolver(schema),
@@ -116,7 +116,7 @@ export default function Login() {
 
       <Botao
         title={t('login.createAccountButton')} 
-        onPress={() => Alert.alert('Criar conta', 'Funcionalidade ainda não implementada')} 
+        onPress={() => router.push('/cadastro')}  
         style={{ marginBottom: 10 }} 
       />
 
