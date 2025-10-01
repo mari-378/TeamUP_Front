@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
 import CardPlacar from './CardPlacar';
-import "@/i18n";
-import { useTranslation } from 'react-i18next';
 
-export default function BotaoAlterarPlacar() {
-    const [pontos, setPontos] = useState(0);
+export default function BotaoAlterarPlacar({ time, pontos, setPontos }) {
     const { temaAtual } = useTheme();
-    const { t } = useTranslation();
 
     function aumentarPontos(valor) {
         setPontos(pontos + valor);
@@ -23,54 +19,32 @@ export default function BotaoAlterarPlacar() {
     return (
         <View style={styles.container}>
             <View style={styles.cardPlacar}>
-                <CardPlacar time={t('score.name')} pontuacao={pontos} />
+                <CardPlacar time={time} pontuacao={pontos} />
             </View>
             
             <View style={styles.containerBotoes}>
-                <TouchableOpacity
-                    onPress={() => aumentarPontos(1)} 
-                    style={[styles.botao, { backgroundColor: temaAtual.botao }]}
-                >
-                    <Text style={[styles.botaoText, { color: temaAtual.fundo }]}>+1</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={() => aumentarPontos(2)} 
-                    style={[styles.botao, { backgroundColor: temaAtual.botao }]}
-                >
-                    <Text style={[styles.botaoText, { color: temaAtual.fundo }]}>+2</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={() => aumentarPontos(3)} 
-                    style={[styles.botao, { backgroundColor: temaAtual.botao }]}
-                >
-                    <Text style={[styles.botaoText, { color: temaAtual.fundo }]}>+3</Text>
-                </TouchableOpacity>
+                {[1,2,3].map(num => (
+                    <TouchableOpacity
+                        key={`+${num}`}
+                        onPress={() => aumentarPontos(num)} 
+                        style={[styles.botao, { backgroundColor: temaAtual.botao }]}
+                    >
+                        <Text style={[styles.botaoText, { color: temaAtual.fundo }]}>+{num}</Text>
+                    </TouchableOpacity>
+                ))}
             </View>
 
-                <View style={styles.containerBotoes}>
+            <View style={styles.containerBotoes}>
+                {[1,2,3].map(num => (
                     <TouchableOpacity
-                        onPress={() => diminuirPontos(1)} 
+                        key={`-${num}`}
+                        onPress={() => diminuirPontos(num)} 
                         style={[styles.botao, { backgroundColor: temaAtual.botao }]}
                     >
-                        <Text style={[styles.botaoText, { color: temaAtual.fundo }]}>-1</Text>
+                        <Text style={[styles.botaoText, { color: temaAtual.fundo }]}>-{num}</Text>
                     </TouchableOpacity>
-
-                    <TouchableOpacity
-                        onPress={() => diminuirPontos(2)} 
-                        style={[styles.botao, { backgroundColor: temaAtual.botao }]}
-                    >
-                        <Text style={[styles.botaoText, { color: temaAtual.fundo }]}>-2</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        onPress={() => diminuirPontos(3)} 
-                        style={[styles.botao, { backgroundColor: temaAtual.botao }]}
-                    >
-                        <Text style={[styles.botaoText, { color: temaAtual.fundo }]}>-3</Text>
-                    </TouchableOpacity>
-                </View>
+                ))}
+            </View>
         </View>
     )
 }

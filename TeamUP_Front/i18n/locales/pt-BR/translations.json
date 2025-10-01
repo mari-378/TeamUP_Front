@@ -41,8 +41,10 @@
     },
     "score": {
         "score": "Placar",
-        "name": "Time 1",
+        "teamA": "Time A",
+        "teamB": "Time B",
         "result": "Resultados",
+        "period": "Período",
         "save": "Salvar placar",
         "reset": "Resetar placar"
     },

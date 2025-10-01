@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 export default function PlacarSalvo({ periodo, pontuacao }) {
     const { temaAtual } = useTheme();
+    const { t } = useTranslation();
 
     return (
         <View style={styles.container}>
@@ -11,7 +13,7 @@ export default function PlacarSalvo({ periodo, pontuacao }) {
                 <View style={styles.circulo}>
                     <Text style={{ color: 'white' }}>{periodo}</Text>
                 </View>
-                <Text>Período</Text>
+                <Text>{t('score.period')}</Text>
             </View>
             <View style={styles.pontuacao}>
                 <Text style={styles.textoPontuacao}>{pontuacao}</Text>
