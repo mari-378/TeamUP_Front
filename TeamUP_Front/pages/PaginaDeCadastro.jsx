@@ -1,7 +1,6 @@
 import { View, StyleSheet, Text } from "react-native";
 import Cadastro from "../components/Cadastro";
 import MudarLingua from "../components/MudarLingua";
-import Botao from "../components/Botao";
 // import { Feather } from "@expo/vector-icons";
 import { useTranslation } from 'react-i18next';
 import MudarTema from "@/components/MudarTema";
