@@ -38,6 +38,7 @@ export default function Cadastro() {
         console.log('submit', data);
 
         const payload = {
+            nome: data.name,
             email: data.email,
             senha: data.password,
             nascimento: data.birthDate,
