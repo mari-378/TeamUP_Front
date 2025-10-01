@@ -2,22 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import '@/i18n';
 import { useTranslation } from 'react-i18next';
-import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from '@/validation/schemas';
+import { Controller } from 'react-hook-form';
 import { Cores } from '../constants/Cores';
 import { Feather } from '@expo/vector-icons';
 
-export default function CardGenero() {
+export default function CardGenero({ control, errors }) {
     const { t } = useTranslation();
-    const schema = loginSchema(t);
-
-    const { control, formState: { errors } } = useForm({
-        defaultValues: {
-            genero: ""
-        },
-        resolver: yupResolver(schema),
-    });
 
     const opcoes = [
         { label: t('signup.female'), value: 'F'},
@@ -30,6 +20,7 @@ export default function CardGenero() {
             <Controller
                 control={control}
                 name='genero'
+                defaultValue=''
                 render={({ field }) => {
                     const { value, onChange } = field;
 

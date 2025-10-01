@@ -14,6 +14,7 @@ export default function CardEmail({ control, errors }) {
         <Controller
             control={control}
             name='email'
+            defaultValue=''
             render={({ field: { onChange, value } }) => (
                 <>
                     <View style={[styles.inputContainer, { backgroundColor: temaAtual.caixaTexto }]}>

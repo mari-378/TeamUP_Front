@@ -2,32 +2,23 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import "@/i18n";
 import { useTranslation } from 'react-i18next';
-import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from '@/validation/schemas';
+import { Controller } from 'react-hook-form';
 import { Picker } from '@react-native-picker/picker';
 import { Cores } from '../constants/Cores';
 
-export default function CardDataDeNascimento() {
+export default function CardDataDeNascimento({ control, errors }) {
     const { t } = useTranslation();
-    const schema = loginSchema(t);
 
-    const { control, formState: { errors } } = useForm({
-        defaultValues: {
-        dataDeNascimento: { dia: '', mes: '', ano: '' }
-    },
-    resolver: yupResolver(schema),
-});
-
-    const dias = Array.from({ length: 31 }, (_, i) => i + 1);
-    const meses = Array.from({ length: 12 }, (_, i) => i + 1);
-    const anos = Array.from({ length: 100 }, (_, i) => 2025 - i);
+    const days = Array.from({ length: 31 }, (_, i) => i + 1);
+    const months = Array.from({ length: 12 }, (_, i) => i + 1);
+    const years = Array.from({ length: 100 }, (_, i) => 2025 - i);
 
   return (
         <View style={styles.container}>
             <Controller
                 control={control}
-                name='dataDeNascimento'
+                name='birthDate'
+                defaultValue={{ day: '', month: '', year: ''}}
                 render={({ field }) => {
                     const { value, onChange } = field;
 
@@ -40,12 +31,12 @@ export default function CardDataDeNascimento() {
                             <View style={styles.linha}>
                                 <View style={[styles.caixaDeEscolha, { borderColor: Cores.light.botao }]}>
                                 <Picker
-                                    selectedValue={value.dia}
-                                    onValueChange={(val) => handleChange('dia', val)}
+                                    selectedValue={value.day}
+                                    onValueChange={(val) => handleChange('day', val)}
                                     style={[styles.picker, { color: Cores.light.textoAzul }]}
                                 >
                                 <Picker.Item label={t('signup.day')} value="" color={Cores.light.textoAzul}/>
-                                {dias.map(d => (
+                                {days.map(d => (
                                     <Picker.Item key={d} label={String(d)} value={String(d)} />
                                 ))}
                                 </Picker>
@@ -53,12 +44,12 @@ export default function CardDataDeNascimento() {
 
                         <View style={[styles.caixaDeEscolha, { borderColor: Cores.light.botao }]}>
                             <Picker
-                                selectedValue={value.mes}
-                                onValueChange={(val) => handleChange('mes', val)}
+                                selectedValue={value.month}
+                                onValueChange={(val) => handleChange('month', val)}
                                 style={[styles.picker, { color: Cores.light.textoAzul }]}
                             >
                             <Picker.Item label={t('signup.month')} value="" color={Cores.light.textoAzul}/>
-                            {meses.map(m => (
+                            {months.map(m => (
                                 <Picker.Item key={m} label={String(m)} value={String(m)} />
                             ))}
                             </Picker>
@@ -66,12 +57,12 @@ export default function CardDataDeNascimento() {
 
                         <View style={[styles.caixaDeEscolha, { borderColor: Cores.light.botao }]}>
                             <Picker
-                                selectedValue={value.ano}
-                                onValueChange={(val) => handleChange('ano', val)}
+                                selectedValue={value.year}
+                                onValueChange={(val) => handleChange('year', val)}
                                 style={[styles.picker, { color: Cores.light.textoAzul }]}
                             >
                             <Picker.Item label={t('signup.year')} value="" color={Cores.light.textoAzul}/>
-                            {anos.map(y => (
+                            {years.map(y => (
                                 <Picker.Item key={y} label={String(y)} value={String(y)} />
                             ))}
                             </Picker>

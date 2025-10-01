@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, Alert, Text } from 'react-native';
-import { useTheme } from '../contexts/ThemeContext';
 import CardNome from './CardNome';
 import CardEmail from './CardEmail';
 import CardSenha from './CardSenha';
@@ -8,59 +7,70 @@ import CardConfirmarSenha from './CardConfirmarSenha';
 import CardDataDeNascimento from './CardDataDeNascimento';
 import CardGenero from './CardGenero';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from '@/validation/schemas';
+import { signUpSchema } from '@/validation/schemas';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import Botao from './Botao';
 
 export default function Cadastro() {
-    const { temaAtual } = useTheme();
-
     const { t } = useTranslation();
 
-    const schema = loginSchema(t);
+    const schema = signUpSchema(t);
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
+        mode: 'onChange',
+        defaultValues: {
+            email: '',
+            password: '',
+            confirmPassword: '',
+            birthDate: { day: '', month: '', year: '' },
+            gender: ''
+        }
     });
 
     const onSubmit = async (data) => {
         try {
-            await axios.post('https://teamup.com/api/cadastro', {
+            const formattedDate = `${data.birthDate.year}-${data.birthDate.month}-${data.birthDate.day}`;
+
+            await axios.post('http://localhost:3000/cadastro', {
                 email: data.email,
-                senha: data.senha,
-                nascimento: data.nascimento,
-                genero: data.genero,
-            },
-            {
+                senha: data.password,
+                dataDeNascimento: formattedDate,
+                genero: data.gender,
+            }, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+            });   
+        } catch (error) {
+            if (error.response) {
+                console.log('Erro no servidor', error.response.data?.message);
+            } else if (error.request) {
+                console.log('Sem resposta do servidor');
+            } else {
+                console.log('Erro', error.message);     
             }
-        );
-        // const result = response.data; ---> talvez usar no futuro
-        Alert.alert('Sucesso', 'Login realizado com sucesso!');
-    } catch (error) {
-        if (error.response) {
-            Alert.alert('Erro', error.response.data?.message || 'Erro no servidor');
-        } else if (error.request) {
-            Alert.alert('Erro', 'Sem resposta do servidor');
-        } else {
-            Alert.alert('Erro', error.message);      
-        }
-    };
-}
+        };
+    }
 
     return (
         <View style={styles.container}>
-            <CardNome />
-            <CardEmail />
-            <CardSenha />
-            <CardConfirmarSenha />
+            <CardNome control={control} errors={errors}/>
+            <CardEmail control={control} errors={errors} />
+            <CardSenha control={control} errors={errors} />
+            <CardConfirmarSenha control={control} errors={errors} />
             <Text style={styles.titulo}>{t('signup.birthDate')}</Text>
-            <CardDataDeNascimento />
+            <CardDataDeNascimento control={control} errors={errors} />
             <Text style={styles.titulo}>{t('signup.gender')}</Text>
-            <CardGenero />
+            <CardGenero control={control} errors={errors} />
+            <Botao 
+                title={t('signup.signup')}
+                onPress={() => {
+                    handleSubmit(onSubmit)();
+                }}
+            />
         </View>
     );
 };
