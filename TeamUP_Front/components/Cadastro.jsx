@@ -40,7 +40,7 @@ export default function Cadastro() {
         const payload = {
             email: data.email,
             senha: data.password,
-            dataDeNascimento: data.birthDate,
+            nascimento: data.birthDate,
             genero: data.gender,
         };
         console.log('Dados a serem enviados', payload)
