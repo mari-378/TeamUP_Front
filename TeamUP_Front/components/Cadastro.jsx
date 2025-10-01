@@ -10,12 +10,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { signUpSchema } from '@/validation/schemas';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
+import { useTheme } from '../contexts/ThemeContext';
 import axios from 'axios';
 import Botao from './Botao';
 
 export default function Cadastro() {
     const { t } = useTranslation();
-
+    const { temaAtual } = useTheme();
     const schema = signUpSchema(t);
 
     const { control, handleSubmit, formState: { errors } } = useForm({
@@ -66,9 +67,9 @@ export default function Cadastro() {
             <CardEmail control={control} errors={errors} />
             <CardSenha control={control} errors={errors} />
             <CardConfirmarSenha control={control} errors={errors} />
-            <Text style={styles.titulo}>{t('signup.birthDate')}</Text>
+            <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('signup.birthDate')}</Text>
             <CardDataDeNascimento control={control} errors={errors} />
-            <Text style={styles.titulo}>{t('signup.gender')}</Text>
+            <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('signup.gender')}</Text>
             <CardGenero control={control} errors={errors} />
             <Botao 
                 title={t('signup.signup')}
