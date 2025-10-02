@@ -3,10 +3,10 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "../contexts/ThemeContext";
 
-export default function Jogadores() {
+export default function Jogadores({ jogadores, removerJogador }) {
   const { temaAtual } = useTheme();
-  
-    return (
+
+  return (
     <View style={styles.container}>
       <Text style={styles.label}>Jogadores ({jogadores.length}):</Text>
 
@@ -18,7 +18,7 @@ export default function Jogadores() {
               <MaterialIcons name="delete" size={18} color="white" />
             </TouchableOpacity>
           </View>
-          ))}
+        ))}
       </View>
     </View>
   );
@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: "gray",
   },
-   playersContainer: {
+  playersContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 8, 
+    gap: 8,
   },
   playerBadge: {
     flexDirection: "row",
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: "blue",
     borderRadius: 20,
     paddingHorizontal: 12,
-     paddingVertical: 6,
+    paddingVertical: 6,
     margin: 4,
   },
   playerText: {

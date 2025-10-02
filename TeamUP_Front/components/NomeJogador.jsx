@@ -3,13 +3,13 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-nativ
 import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "../contexts/ThemeContext";
 
-export default function NomeJogador() {
+export default function NomeJogador({ onAdicionar }) {
   const { temaAtual } = useTheme();
   const [nome, setNome] = useState("");
 
-  const adicionarJogador = () => {
+  const adicionar = () => {
     if (nome.trim() !== "") {
-      console.log("Jogador adicionado:", nome);
+      onAdicionar(nome); 
       setNome("");
     }
   };
@@ -34,7 +34,7 @@ export default function NomeJogador() {
           value={nome}
           onChangeText={setNome}
         />
-        <TouchableOpacity style={styles.addButton} onPress={adicionarJogador}>
+        <TouchableOpacity style={styles.addButton} onPress={adicionar}>
           <MaterialIcons name="add" size={22} color="white" />
         </TouchableOpacity>
       </View>

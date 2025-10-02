@@ -12,7 +12,7 @@ export default function SelecaoFuncionalidade() {
         <View style={styles.container}>
             <Botao
                 title={t('featureOptions.teamDraw')} 
-                onPress={() => router.push('/sorteio')}
+                onPress={() => router.push('/maxjogadores')}
             />
             <Botao
                 title={t('featureOptions.score')} 

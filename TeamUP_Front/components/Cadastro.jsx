@@ -52,7 +52,7 @@ export default function Cadastro() {
                     'Content-Type': 'application/json',
                 },
             });
-            router.push('/placar');
+            router.push('/funcionalidades');
         } catch (error) {
             if (error.response) {
                 console.log('Erro no servidor', error.response.data?.message);

@@ -1,18 +1,24 @@
 import React, { useState } from "react";
-import { View, Button, ScrollView, StyleSheet } from "react-native";
+import { View, Button, ScrollView, StyleSheet, TextInput, TouchableOpacity, Text } from "react-native";
 import axios from "axios";
-import NomeJogador from "../components/NomeJogador";
-import Jogadores from "../components/Jogadores";
-import Habilidade from "../components/Habilidade";
+import { MaterialIcons } from "@expo/vector-icons";
+import { useLocalSearchParams } from "expo-router"; // para pegar params da rota
 import Times from "../components/Times";
 
 export default function PaginaDeSorteio() {
   const [jogadores, setJogadores] = useState([]);
+  const [nome, setNome] = useState("");
+  const [habilidadeTemp, setHabilidadeTemp] = useState(0);
   const [times, setTimes] = useState([]);
 
-  const adicionarJogador = (nome) => {
+  const params = useLocalSearchParams(); 
+  const maxPorTime = params.maxPorTime ? Number(params.maxPorTime) : 2; // padrão 2 se não vier
+
+  const adicionarJogador = () => {
     if (nome.trim() !== "") {
-      setJogadores([...jogadores, { nome, habilidade: 0 }]);
+      setJogadores([...jogadores, { nome, habilidade: habilidadeTemp }]);
+      setNome("");
+      setHabilidadeTemp(0);
     }
   };
 
@@ -20,44 +26,86 @@ export default function PaginaDeSorteio() {
     setJogadores(jogadores.filter((_, i) => i !== index));
   };
 
-  const atualizarNivel = (index, nivel) => {
-    const copia = [...jogadores];
-    copia[index].habilidade = nivel;
-    setJogadores(copia);
-  };
-
   const sortearTimes = async () => {
     try {
       const payload = {
-        jogadores_por_time: 5,
+        maxPorTime: maxPorTime,
         jogadores: jogadores,
       };
 
-      const response = await axios.post("http://seu-backend.com/sorteio", payload);
+      const response = await axios.post("http://localhost:3000/sorteio", payload);
       setTimes(response.data.times);
     } catch (error) {
-      console.error("Erro ao sortear times:", error);
+      if (error.response) {
+        console.error("Erro do servidor:", error.response.status, error.response.data);
+      } else if (error.request) {
+        console.error("Nenhuma resposta recebida:", error.request);
+      } else {
+        console.error("Erro ao configurar requisição:", error.message);
+      }
     }
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <NomeJogador onAdd={adicionarJogador} />
-      <Jogadores jogadores={jogadores.map(j => j.nome)} removerJogador={removerJogador} />
-
-      {jogadores.map((jogador, index) => (
-        <Habilidade
-          key={index}
-          nivelInicial={jogador.experiencia}
-          onChange={(nivel) => atualizarNivel(index, nivel)}
-          label={`Habilidade de ${jogador.nome}`}
+      {/* Input do jogador */}
+      <View style={styles.inputRow}>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite o nome"
+          placeholderTextColor="#6B6B6B"
+          value={nome}
+          onChangeText={setNome}
         />
-      ))}
+        <TouchableOpacity style={styles.addButton} onPress={adicionarJogador}>
+          <MaterialIcons name="add" size={22} color="white" />
+        </TouchableOpacity>
+      </View>
 
+      {/* Seleção de habilidade com estrelas */}
+      <View style={styles.starsRow}>
+        {[1, 2, 3, 4, 5].map((num) => (
+          <TouchableOpacity key={num} onPress={() => setHabilidadeTemp(num)}>
+            <MaterialIcons
+              name={num <= habilidadeTemp ? "star" : "star-border"}
+              size={30}
+              color="gold"
+              style={styles.star}
+            />
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* Lista de jogadores com nome + número + estrela */}
+      <View style={styles.playersContainer}>
+        {jogadores.map((jogador, index) => (
+          <View key={index} style={styles.playerBadge}>
+            <Text style={styles.playerText}>{jogador.nome}</Text>
+            <View style={styles.habilidadeInline}>
+              <Text style={styles.habilidadeNum}>{jogador.habilidade}</Text>
+              <MaterialIcons name="star" size={18} color="yellow" />
+            </View>
+            <TouchableOpacity onPress={() => removerJogador(index)}>
+              <MaterialIcons name="delete" size={18} color="white" />
+            </TouchableOpacity>
+          </View>
+        ))}
+      </View>
+
+      {/* Botão para sortear */}
       <Button title="Sortear Times" onPress={sortearTimes} />
 
       {/* Exibir times sorteados */}
       {times.length > 0 && <Times times={times} />}
+
+      {/* Botão para resetar */}
+      <View style={{ marginTop: 10 }}>
+        <Button
+          title="Resetar Times"
+          color="blue"
+          onPress={() => setTimes([])}
+        />
+      </View>
     </ScrollView>
   );
 }
@@ -65,5 +113,64 @@ export default function PaginaDeSorteio() {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+  },
+  inputRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  input: {
+    flex: 1,
+    backgroundColor: "#c9fd06",
+    borderRadius: 15,
+    paddingHorizontal: 12,
+    height: 40,
+    fontSize: 14,
+    color: "#000",
+  },
+  addButton: {
+    backgroundColor: "blue",
+    marginLeft: 6,
+    borderRadius: 15,
+    width: 40,
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  starsRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  star: {
+    marginRight: 6,
+  },
+  playersContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginVertical: 10,
+  },
+  playerBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "blue",
+    borderRadius: 20,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    margin: 4,
+  },
+  playerText: {
+    color: "white",
+    marginRight: 6,
+    fontSize: 14,
+  },
+  habilidadeInline: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginRight: 6,
+  },
+  habilidadeNum: {
+    color: "white",
+    marginRight: 2,
   },
 });
