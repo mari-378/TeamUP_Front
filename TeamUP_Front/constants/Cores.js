@@ -10,7 +10,7 @@ export const Cores = {
     botao: 'rgb(0, 0, 255)',
     erro: 'rgb(0, 0, 255)',
     textoSecundario: 'rgb(0, 0, 255)',
-    checkboxTexto: 'rgba(0, 0, 255, 0.5)'
+    checkboxTexto: 'rgba(0, 0, 255, 0.5)',
   },
   dark: {
     fundo: 'rgb(18, 18, 18)',

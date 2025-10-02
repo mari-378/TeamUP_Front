@@ -83,6 +83,7 @@ export default function PaginaDePlacar() {
 const styles = StyleSheet.create({
     container: {
         gap: 20,
+        height: '100%',
     },
     head: {
         flexDirection: 'row',
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
     titulo: {
         fontSize: 30,
         paddingLeft: 30,
+        paddingTop: 10,
     },
     botoesTroca: {
         flexDirection: 'row',

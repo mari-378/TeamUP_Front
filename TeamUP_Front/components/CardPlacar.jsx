@@ -8,7 +8,7 @@ export default function CardPlacar( {time, pontuacao} ) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.textoTime}>{time}</Text>
+            <Text style={[styles.textoTime, { color: temaAtual.textoSecundario }]}>{time}</Text>
             <View style={[styles.placar, { backgroundColor: temaAtual.caixaTexto }]}>
                 <Text style={styles.textoContainer}>{pontuacao}</Text>
             </View>
@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     },
     textoTime: {
         paddingLeft: 10,
+        paddingBottom: 10,
         fontSize: 16,
     },
     placar: {

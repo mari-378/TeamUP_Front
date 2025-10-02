@@ -18,6 +18,12 @@ export default function PaginaDeFuncionalidades() {
 
 const styles = StyleSheet.create({
     container: {
-        gap: 20,
+        gap: 50,
+        height: '100%',
+    },
+    texto: {
+        fontSize: 30,
+        paddingLeft: 30,
+        paddingTop: 10,
     }
 });
