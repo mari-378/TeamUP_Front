@@ -54,6 +54,7 @@
         "signUp": "Cadastrar"
     },
     "featureOptions": {
+        "title": "Funcionalidades",
         "teamDraw": "Sorteio de Equipes",
         "score": "Placar",
         "timer": "Cronômetro",

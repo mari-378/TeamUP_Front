@@ -56,6 +56,7 @@
         "signUp": "Sign Up"
     },
     "featureOptions": {
+        "title": "Features",
         "teamDraw": "Team Draw",
         "score": "Score",
         "timer": "Timer",
