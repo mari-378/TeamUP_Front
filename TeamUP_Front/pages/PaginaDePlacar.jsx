@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import '@/i18n';
 import { useTranslation } from 'react-i18next';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, StyleSheet } from 'react-native';
 import BotaoAlterarPlacar from '../components/BotaoAlterarPlacar';
 import Botao from '../components/Botao';
 import PlacarSalvo from '../components/PlacarSalvo';
@@ -32,7 +32,7 @@ export default function PaginaDePlacar() {
     };
 
     return (
-        <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
+        <ScrollView style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
             <View style={styles.head}>
                 <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('score.score')}</Text>
                 <View style={styles.botoesTroca}>
@@ -76,7 +76,7 @@ export default function PaginaDePlacar() {
                 onPress={resetarPlacar}
                 style={styles.botao}
             />
-        </View>
+        </ScrollView>
     )
 };
 
@@ -106,5 +106,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         paddingLeft: 30,
         paddingTop: 20,
+        paddingBottom: 10,
     }
 });

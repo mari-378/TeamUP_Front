@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         gap: 20,
+        paddingBottom: 10,
     },
     periodoAtual: {
         flexDirection: 'row',
