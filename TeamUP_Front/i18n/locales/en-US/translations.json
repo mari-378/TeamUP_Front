@@ -56,6 +56,9 @@
         "features": "Features",
         "signUp": "Sign Up"
     },
+    "selectSport": {
+        "title": "Select a sport:"
+    },
     "featureOptions": {
         "title": "Features",
         "teamDraw": "Team Draw",

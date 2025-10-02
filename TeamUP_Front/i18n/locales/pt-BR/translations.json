@@ -54,6 +54,9 @@
         "features": "Funcionalidades",
         "signUp": "Cadastrar"
     },
+    "selectSport": {
+        "title": "Selecione um esporte:"
+    },
     "featureOptions": {
         "title": "Funcionalidades",
         "teamDraw": "Sorteio de Equipes",
