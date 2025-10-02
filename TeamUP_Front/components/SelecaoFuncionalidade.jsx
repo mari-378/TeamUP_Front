@@ -24,7 +24,7 @@ export default function SelecaoFuncionalidade() {
             />
             <Botao
                 title={t('featureOptions.rules')} 
-                onPress={() => router.push('/regras')}
+                onPress={() => router.push('/esporte')}
             />
         </View>
     )

@@ -3,7 +3,6 @@ import { View, StyleSheet } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
 import Botao from './Botao';
-import { Regras } from './Regras';
 
 export default function SelecaoEsporte() {
     const { t } = useTranslation();
@@ -14,25 +13,18 @@ export default function SelecaoEsporte() {
             <Botao
                 title={t('sports.football')} 
                 onPress={() => {
-                    const esporte = 'football';
-                    Regras(esporte);
-                    router.push('/regras')}}
+                    router.push({ pathname: '/regras', params: { esporte: 'football' }})}}
             />
             <Botao
                 title={t('sports.volleyball')} 
                 onPress={() => {
-                    const esporte = 'volleyball';
-                    Regras(esporte);
-                    router.push('/regras')}}
+                    router.push({ pathname: '/regras', params: { esporte: 'volleyball' }})}}
             />
             <Botao
                 title={t('sports.basketball')} 
                 onPress={() => {
-                    const esporte = 'basketball';
-                    Regras(esporte);
-                    router.push('/regras')}}
+                    router.push({ pathname: '/regras', params: { esporte: 'basketball' }})}}
             />
-
         </View>
     )
 };
