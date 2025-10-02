@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from 'react-native';
+import { View, ScrollView, StyleSheet, Text } from 'react-native';
 import { useLocalSearchParams } from "expo-router";
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../contexts/ThemeContext';
@@ -13,7 +13,7 @@ export default function PaginaRegras() {
     const { t } = useTranslation();
 
     return (
-        <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
+        <ScrollView contentContainerStyle={[styles.container, { backgroundColor: temaAtual.fundo }]}>
             <View style={styles.head}>
                 <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('featureOptions.rules')}</Text>
                     <View style={styles.botoesTroca}>
@@ -22,7 +22,7 @@ export default function PaginaRegras() {
                     </View>               
             </View>
             <Regras esporte={esporte} />
-        </View>
+        </ScrollView>
     )
 };
 

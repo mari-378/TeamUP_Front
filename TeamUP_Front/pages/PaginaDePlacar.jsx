@@ -61,7 +61,7 @@ export default function PaginaDePlacar() {
                 style={[styles.botao]}
             />
 
-            <Text style={styles.resultado}>{t('score.result')}</Text>
+            <Text style={[styles.resultado, { color: temaAtual.texto }]}>{t('score.result')}</Text>
 
             {placaresSalvos.map((p, index) => (
                 <PlacarSalvo 

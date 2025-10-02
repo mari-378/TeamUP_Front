@@ -2,9 +2,11 @@ import React, { useState, useRef } from "react";
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from "react-native";
 import { MaterialIcons, Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { useTheme } from "../contexts/ThemeContext";
+import { useTranslation } from "react-i18next";
 
 export default function Cronometro() {
   const { temaAtual } = useTheme();
+  const { t } = useTranslation();
   const [time, setTime] = useState(0); // tempo em segundos
   const [running, setRunning] = useState(false);
   const [customMinutes, setCustomMinutes] = useState("");
@@ -57,42 +59,42 @@ export default function Cronometro() {
       <View style={styles.controls}>
         <TouchableOpacity style={styles.button} onPress={start}>
           <MaterialIcons name="play-arrow" size={22} color="#000" />
-          <Text style={styles.buttonText}>Iniciar</Text>
+          <Text style={styles.buttonText}>{t('timer.start')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={pause}>
           <Ionicons name="pause" size={22} color="#000" />
-          <Text style={styles.buttonText}>Pausar</Text>
+          <Text style={styles.buttonText}>{t('timer.pause')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={reset}>
           <MaterialIcons name="refresh" size={22} color="#000" />
-          <Text style={styles.buttonText}>Reset</Text>
+          <Text style={styles.buttonText}>{t('timer.reset')}</Text>
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.subtitle}>Tempos pré-definidos:</Text>
+      <Text style={[styles.subtitle, { color: temaAtual.texto }]}>{t('timer.predefinedTimes')}</Text>
       <View style={styles.predefinedContainer}>
         {[10, 12, 15, 45, 60].map((m) => (
           <TouchableOpacity
             key={m}
-            style={styles.predefinedButton}
+            style={[styles.predefinedButton, { borderColor: temaAtual.textoSecundario }]}
             onPress={() => setPredefinedTime(m)}
           >
-            <Text style={styles.predefinedText}>{m} min</Text>
+            <Text style={[styles.predefinedText, { color: temaAtual.textoSecundario }]}>{m} min</Text>
           </TouchableOpacity>
         ))}
       </View>
 
-      <Text style={styles.subtitle}>Tempo Personalizado:</Text>
+      <Text style={[styles.subtitle, { color: temaAtual.texto }]}>{t('timer.personalizedTime')}</Text>
       <View style={styles.customContainer}>
         <TextInput
-          style={styles.input}
+          style={[styles.input, { color: temaAtual.texto }]}
           keyboardType="numeric"
-          placeholder="Minutos"
+          placeholder={t('timer.placeholder')}
           value={customMinutes}
           onChangeText={setCustomMinutes}
         />
         <TouchableOpacity style={styles.addButton} onPress={addCustomTime}>
-          <FontAwesome5 name="plus" size={20} color="#fff" />
+          <FontAwesome5 name="plus" size={12} color="#fff" />
         </TouchableOpacity>
       </View>
     </View>
@@ -156,13 +158,11 @@ const styles = StyleSheet.create({
   },
   predefinedButton: {
     borderWidth: 1,
-    borderColor: "blue",
     borderRadius: 8,
     padding: 8,
     margin: 5,
   },
   predefinedText: {
-    color: "blue",
     fontSize: 14,
   },
   customContainer: {

@@ -16,7 +16,7 @@ export default function PlacarSalvo({ periodo, pontuacao }) {
                 <Text>{t('score.period')}</Text>
             </View>
             <View style={styles.pontuacao}>
-                <Text style={styles.textoPontuacao}>{pontuacao}</Text>
+                <Text style={[styles.textoPontuacao, { color: temaAtual.texto }]}>{pontuacao}</Text>
             </View>
         </View>
     )

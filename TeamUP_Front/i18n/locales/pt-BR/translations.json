@@ -64,6 +64,14 @@
         "timer": "Cronômetro",
         "rules": "Regras dos Jogos"
     },
+    "timer": {
+        "start": "Iniciar",
+        "pause": "Pausar",
+        "reset": "Resetar",
+        "predefinedTimes": "Tempos pré-definidos:",
+        "personalizedTime": "Tempo personalizado:",
+        "placeholder": "Minutos"
+    },
     "sports": {
         "football": "Futebol",
         "volleyball": "Vôlei",

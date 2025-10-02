@@ -66,6 +66,14 @@
         "timer": "Timer",
         "rules": "Games Rules"
     },
+    "timer": {
+        "start": "Start",
+        "pause": "Pause",
+        "reset": "Reset",
+        "predefinedTimes": "Predefined times:",
+        "personalizedTime": "Personalized time:",
+        "placeholder": "Minutes"
+    },
     "sports": {
         "football": "Football",
         "volleyball": "Volleyball",
