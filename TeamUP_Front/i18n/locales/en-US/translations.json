@@ -54,5 +54,11 @@
         "aboutUs": "About Us",
         "features": "Features",
         "signUp": "Sign Up"
+    },
+    "featureOptions": {
+        "teamDraw": "Team Draw",
+        "score": "Score",
+        "timer": "Timer",
+        "rules": "Games Rules"
     }
 }

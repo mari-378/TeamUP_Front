@@ -52,5 +52,11 @@
         "aboutUs": "Sobre Nós",
         "features": "Funcionalidades",
         "signUp": "Cadastrar"
+    },
+    "featureOptions": {
+        "teamDraw": "Sorteio de Equipes",
+        "score": "Placar",
+        "timer": "Cronômetro",
+        "rules": "Regras dos Jogos"
     }
 }
