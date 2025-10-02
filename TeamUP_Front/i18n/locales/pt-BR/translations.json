@@ -59,5 +59,28 @@
         "score": "Placar",
         "timer": "Cronômetro",
         "rules": "Regras dos Jogos"
+    },
+    "sports": {
+        "football": "Futebol",
+        "volleyball": "Vôlei",
+        "basketball": "Basquete"
+    },
+    "football": {
+        "firstRule": "O jogo é disputado por duas equipes de 11 jogadores cada (incluindo o goleiro).",
+        "secondRule": "Só o goleiro pode usar as mãos, e apenas dentro da área dele.",
+        "thirdRule": "A partida tem dois tempos de 45 minutos cada.",
+        "fourthRule": "Um gol só é válido quando a bola cruza totalmente a linha entre as traves e sob o travessão."
+    },
+    "volleyball": {
+        "firstRule": "Cada equipe tem 6 jogadores em quadra.",
+        "secondRule": "Cada time pode dar no máximo 3 toques na bola antes de enviá-la para o outro lado.",
+        "thirdRule": "Não é permitido segurar ou conduzir a bola — ela deve ser rebatida.",
+        "fourthRule": "O jogo é em sets de 25 pontos (vence quem ganhar 3 sets primeiro, em partidas normais)."
+    },
+    "basketball": {
+        "firstRule": "Cada equipe joga com 5 jogadores em quadra.",
+        "secondRule": "O jogo é dividido em 4 quartos de 10 ou 12 minutos (dependendo da liga).",
+        "thirdRule": "Um arremesso vale 2 pontos, 3 pontos se feito de fora da linha de 3, e 1 ponto em lance livre.",
+        "fourthRule": "Cada time tem 24 segundos para tentar um arremesso (regra dos 24 segundos)."
     }
 }

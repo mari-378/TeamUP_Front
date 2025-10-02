@@ -61,5 +61,28 @@
         "score": "Score",
         "timer": "Timer",
         "rules": "Games Rules"
+    },
+    "sports": {
+        "football": "Football",
+        "volleyball": "Volleyball",
+        "basketball": "Basketball"
+    },
+    "football": {
+        "firstRule": "The game is played by two teams of 11 players each (including the goalkeeper).",
+        "secondRule": "Only the goalkeeper may use their hands, and only inside their own penalty area.",
+        "thirdRule": "The match has two halves of 45 minutes each.",
+        "fourthRule": "A goal is only valid when the ball completely crosses the line between the posts and under the crossbar."
+    },
+    "volleyball": {
+        "firstRule": "Each team has 6 players on the court.",
+        "secondRule": "Each team may touch the ball a maximum of 3 times before sending it to the other side.",
+        "thirdRule": "It is not allowed to hold or carry the ball — it must be hit.",
+        "fourthRule": "The game is played in sets of 25 points (the winner is the team that wins 3 sets first, in standard matches)."
+    },
+    "basketball": {
+        "firstRule": "Each team plays with 5 players on the court.",
+        "secondRule": "The game is divided into 4 quarters of 10 or 12 minutes (depending on the league).",
+        "thirdRule": "A field goal is worth 2 points, 3 points if made from beyond the three-point line, and 1 point for a free throw.",
+        "fourthRule": "Each team has 24 seconds to attempt a shot (24-second rule)."
     }
 }
