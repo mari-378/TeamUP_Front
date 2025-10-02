@@ -111,6 +111,7 @@ export default function Login() {
             return;
           }
           handleSubmit(onSubmit)();
+          router.push('/funcionalidades')
         }}
       />
 
