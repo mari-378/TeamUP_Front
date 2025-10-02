@@ -1,7 +1,7 @@
-import Cronometro from '../components/Cronometro';
+import PaginaDeCronometro from '../pages/PaginaDeCronometro';
 
-export default function CronometroRota() {
+export default function PaginaCronometro() {
   return (
-    <Cronometro />
+    <PaginaDeCronometro />
   )
 };

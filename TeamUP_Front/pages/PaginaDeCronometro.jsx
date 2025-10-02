@@ -1,27 +1,25 @@
 import React from "react";
 import { View, StyleSheet, Text } from 'react-native';
-import { useLocalSearchParams } from "expo-router";
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../contexts/ThemeContext';
 import MudarTema from '@/components/MudarTema';
 import MudarLingua from '@/components/MudarLingua';
-import Regras from '../components/Regras';
+import Cronometro from '../components/Cronometro';
 
-export default function PaginaRegras() {
-    const { esporte } = useLocalSearchParams();
+export default function PaginaCronometro() {
     const { temaAtual } = useTheme();
     const { t } = useTranslation();
 
     return (
         <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
             <View style={styles.head}>
-                <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('featureOptions.rules')}</Text>
+                <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('featureOptions.timer')}</Text>
                     <View style={styles.botoesTroca}>
                         <MudarLingua />
                         <MudarTema />
                     </View>               
             </View>
-            <Regras esporte={esporte} />
+            <Cronometro />
         </View>
     )
 };

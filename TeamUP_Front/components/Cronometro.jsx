@@ -49,9 +49,7 @@ export default function Cronometro() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Cronômetro</Text>
-
+    <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
       <View style={styles.timerBox}>
         <Text style={styles.timerText}>{formatTime(time)}</Text>
       </View>

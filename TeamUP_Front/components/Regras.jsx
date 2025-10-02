@@ -9,14 +9,35 @@ export default function Regras({ esporte }) {
 
     return (
         <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
-            <Text style={[styles.text, { color: temaAtual.texto }]}>{t(`${esporte}.firstRule`)}</Text>
-            <Text style={[styles.text, { color: temaAtual.texto }]}>{t(`${esporte}.secondRule`)}</Text>
-            <Text style={[styles.text, { color: temaAtual.texto }]}>{t(`${esporte}.thirdRule`)}</Text>
+            <View style={[styles.cardText, { backgroundColor: temaAtual.caixaTexto }]}>
+                <Text style={[styles.text, { color: temaAtual.textoAzul }]}>{t(`${esporte}.firstRule`)}</Text>
+            </View>
+
+            <View style={[styles.cardText, { backgroundColor: temaAtual.caixaTexto }]}>
+                <Text style={[styles.text, { color: temaAtual.textoAzul }]}>{t(`${esporte}.secondRule`)}</Text>
+            </View>
+
+            <View style={[styles.cardText, { backgroundColor: temaAtual.caixaTexto }]}>
+                <Text style={[styles.text, { color: temaAtual.textoAzul }]}>{t(`${esporte}.thirdRule`)}</Text>
+            </View>
+
+            <View style={[styles.cardText, { backgroundColor: temaAtual.caixaTexto }]}>
+                <Text style={[styles.text, { color: temaAtual.textoAzul }]}>{t(`${esporte}.fourthRule`)}</Text>
+            </View>
         </View>
     )
 };
 
 const styles = StyleSheet.create({
+    container: {
+        gap: 20,
+    },
+    cardText: {
+        borderRadius: 10,
+        height: 50,
+        justifyContent: 'center',
+        padding: 10,
+    },
     text: {
         fontSize: 20,
         textAlign: 'center',

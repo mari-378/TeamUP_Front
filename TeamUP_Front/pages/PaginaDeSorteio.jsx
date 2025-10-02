@@ -4,12 +4,14 @@ import axios from "axios";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useLocalSearchParams } from "expo-router"; // para pegar params da rota
 import Times from "../components/Times";
+import { useTheme } from "../contexts/ThemeContext";
 
 export default function PaginaDeSorteio() {
   const [jogadores, setJogadores] = useState([]);
   const [nome, setNome] = useState("");
   const [habilidadeTemp, setHabilidadeTemp] = useState(0);
   const [times, setTimes] = useState([]);
+  const { temaAtual } = useTheme();
 
   const params = useLocalSearchParams(); 
   const maxPorTime = params.maxPorTime ? Number(params.maxPorTime) : 2; // padrão 2 se não vier
@@ -47,8 +49,7 @@ export default function PaginaDeSorteio() {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {/* Input do jogador */}
+    <ScrollView contentContainerStyle={[styles.container, { backgroundColor: temaAtual.fundo }]}>
       <View style={styles.inputRow}>
         <TextInput
           style={styles.input}
@@ -62,7 +63,6 @@ export default function PaginaDeSorteio() {
         </TouchableOpacity>
       </View>
 
-      {/* Seleção de habilidade com estrelas */}
       <View style={styles.starsRow}>
         {[1, 2, 3, 4, 5].map((num) => (
           <TouchableOpacity key={num} onPress={() => setHabilidadeTemp(num)}>
@@ -76,7 +76,6 @@ export default function PaginaDeSorteio() {
         ))}
       </View>
 
-      {/* Lista de jogadores com nome + número + estrela */}
       <View style={styles.playersContainer}>
         {jogadores.map((jogador, index) => (
           <View key={index} style={styles.playerBadge}>
@@ -92,13 +91,10 @@ export default function PaginaDeSorteio() {
         ))}
       </View>
 
-      {/* Botão para sortear */}
       <Button title="Sortear Times" onPress={sortearTimes} />
 
-      {/* Exibir times sorteados */}
       {times.length > 0 && <Times times={times} />}
 
-      {/* Botão para resetar */}
       <View style={{ marginTop: 10 }}>
         <Button
           title="Resetar Times"
@@ -113,6 +109,7 @@ export default function PaginaDeSorteio() {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    height: '100%'
   },
   inputRow: {
     flexDirection: "row",
