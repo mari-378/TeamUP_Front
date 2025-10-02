@@ -37,7 +37,8 @@
         "passwordRequired": "A senha é obrigatória",
         "nameRequired": "O nome é obrigatório",
         "passwordsMustMatch": "As senhas devem coincidir",
-        "confirmPasswordRequired": "A confirmação de senha é obrigatória"
+        "confirmPasswordRequired": "A confirmação de senha é obrigatória",
+        "invalidGender": "O gênero é obrigatório"
     },
     "score": {
         "score": "Placar",
