@@ -5,9 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { Controller } from 'react-hook-form';
 import { Cores } from '../constants/Cores';
 import { Feather } from '@expo/vector-icons';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function CardGenero({ control, errors }) {
     const { t } = useTranslation();
+    const { temaAtual } = useTheme();
 
     const opcoes = [
         { label: t('signup.female'), value: 'F'},
@@ -32,15 +34,15 @@ export default function CardGenero({ control, errors }) {
                                     return (
                                         <TouchableOpacity
                                             key={opcao.value}
-                                            style={styles.cartao}
+                                            style={[styles.cartao, { borderColor: temaAtual.textoSecundario }]}
                                             onPress={() => {
                                                 console.log('genero', opcao.value)
                                                 onChange(opcao.value);
                                             }}
                                         >
                                             <View style={styles.conteudo}>
-                                                <Text style={styles.texto}>{opcao.label}</Text>
-                                                <View style={styles.circulo}>
+                                                <Text style={[styles.texto, { color: temaAtual.textoSecundario }]}>{opcao.label}</Text>
+                                                <View style={[styles.circulo, { borderColor: temaAtual.textoSecundario }]}>
                                                     {selecionado && (
                                                         <Feather
                                                             name='check'
@@ -56,7 +58,7 @@ export default function CardGenero({ control, errors }) {
                             </View>
 
                             {errors.gender && (
-                                <Text style={styles.error}>{t(errors.gender.message)}</Text>
+                                <Text style={[styles.error, { color: temaAtual.erro }]}>{t(errors.gender.message)}</Text>
                             )}
                         </>
                     );
@@ -71,10 +73,6 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         marginBottom: 25,
     },
-    rotulo: {
-        marginBottom: 5,
-        color: Cores.light.textoAzul,
-    },
     linha: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -84,7 +82,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
         paddingVertical: 5,
         borderWidth: 1,
-        borderColor: Cores.light.botao,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -100,16 +97,11 @@ const styles = StyleSheet.create({
         height: 15,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: Cores.light.botao,
         alignItems:'center',
         justifyContent: 'center',
         marginRight: 8,
     },
-    texto: {
-        color: Cores.light.textoAzul,
-    },
     error: {
         marginTop: 5,
-        color: Cores.light.erro,
     }
 })

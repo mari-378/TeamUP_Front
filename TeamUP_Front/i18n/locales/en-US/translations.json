@@ -74,6 +74,11 @@
         "personalizedTime": "Personalized time:",
         "placeholder": "Minutes"
     },
+    "draw": {
+        "placeholder": "Type the name",
+        "drawTeams": "Draw teams",
+        "resetTeams": "Reset teams"
+    },
     "sports": {
         "football": "Football",
         "volleyball": "Volleyball",

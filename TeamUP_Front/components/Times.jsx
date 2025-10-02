@@ -7,12 +7,12 @@ const Times = ({ times }) => {
     <ScrollView contentContainerStyle={styles.container}>
       {times.map((time, index) => (
         <View key={index} style={styles.timeCard}>
-          <Text style={styles.timeTitle}>Time {index + 1}</Text>
+          <Text style={styles.timeTitle}> {index + 1}</Text>
           {time.map((jogador, jIndex) => (
             <View key={jIndex} style={styles.jogador}>
               <Text style={styles.jogadorText}>
-                {jogador.nome} — {jogador.habilidade}{" "}
-                <MaterialIcons name="star" size={16} color="yellow" />
+                {jogador.nome}  {jogador.habilidade}{" "}
+                <MaterialIcons name="star" size={16} color="yellow" /> { /*mudar aqui depois */}
               </Text>
             </View>
           ))}

@@ -72,6 +72,11 @@
         "personalizedTime": "Tempo personalizado:",
         "placeholder": "Minutos"
     },
+    "draw": {
+        "placeholder": "Digite o nome",
+        "drawTeams": "Sortear times",
+        "resetTeams": "Resetar times"
+    },
     "sports": {
         "football": "Futebol",
         "volleyball": "Vôlei",

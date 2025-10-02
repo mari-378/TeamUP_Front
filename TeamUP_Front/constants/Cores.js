@@ -13,7 +13,7 @@ export const Cores = {
     checkboxTexto: 'rgba(0, 0, 255, 0.5)',
   },
   dark: {
-    fundo: 'rgb(18, 18, 18)',
+    fundo: 'rgb(33, 33, 33)',
     texto: 'rgb(249, 245, 236)',
     textoAzul: 'rgba(0, 0, 255, 0.5)',
     icones: 'rgba(0, 0, 255, 0.5)',

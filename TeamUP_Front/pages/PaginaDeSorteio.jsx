@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { View, Button, ScrollView, StyleSheet, TextInput, TouchableOpacity, Text } from "react-native";
 import axios from "axios";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useLocalSearchParams } from "expo-router"; // para pegar params da rota
+import { useLocalSearchParams } from "expo-router";
 import Times from "../components/Times";
 import { useTheme } from "../contexts/ThemeContext";
+import { useTranslation } from 'react-i18next';
+import MudarTema from '@/components/MudarTema';
+import MudarLingua from '@/components/MudarLingua';
 
 export default function PaginaDeSorteio() {
   const [jogadores, setJogadores] = useState([]);
@@ -12,6 +15,7 @@ export default function PaginaDeSorteio() {
   const [habilidadeTemp, setHabilidadeTemp] = useState(0);
   const [times, setTimes] = useState([]);
   const { temaAtual } = useTheme();
+  const { t } = useTranslation();
 
   const params = useLocalSearchParams(); 
   const maxPorTime = params.maxPorTime ? Number(params.maxPorTime) : 2; // padrão 2 se não vier
@@ -50,11 +54,19 @@ export default function PaginaDeSorteio() {
 
   return (
     <ScrollView contentContainerStyle={[styles.container, { backgroundColor: temaAtual.fundo }]}>
+      <View style={styles.head}>
+        <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('featureOptions.rules')}</Text>
+        <View style={styles.botoesTroca}>
+            <MudarLingua />
+            <MudarTema />
+        </View>               
+      </View>
+      
       <View style={styles.inputRow}>
         <TextInput
-          style={styles.input}
-          placeholder="Digite o nome"
-          placeholderTextColor="#6B6B6B"
+          style={[styles.input, { backgroundColor: temaAtual.caixaTexto }]}
+          placeholder={t('draw.placeholder')}
+          placeholderTextColor={temaAtual.textoAzul}
           value={nome}
           onChangeText={setNome}
         />
@@ -69,7 +81,7 @@ export default function PaginaDeSorteio() {
             <MaterialIcons
               name={num <= habilidadeTemp ? "star" : "star-border"}
               size={30}
-              color="gold"
+              color={temaAtual.caixaTexto}
               style={styles.star}
             />
           </TouchableOpacity>
@@ -82,7 +94,7 @@ export default function PaginaDeSorteio() {
             <Text style={styles.playerText}>{jogador.nome}</Text>
             <View style={styles.habilidadeInline}>
               <Text style={styles.habilidadeNum}>{jogador.habilidade}</Text>
-              <MaterialIcons name="star" size={18} color="yellow" />
+              <MaterialIcons name="star" size={18} color={temaAtual.caixaTexto} />
             </View>
             <TouchableOpacity onPress={() => removerJogador(index)}>
               <MaterialIcons name="delete" size={18} color="white" />
@@ -91,14 +103,14 @@ export default function PaginaDeSorteio() {
         ))}
       </View>
 
-      <Button title="Sortear Times" onPress={sortearTimes} />
+      <Button title={t('draw.drawTeams')} color={temaAtual.botao} onPress={sortearTimes} />
 
       {times.length > 0 && <Times times={times} />}
 
       <View style={{ marginTop: 10 }}>
         <Button
-          title="Resetar Times"
-          color="blue"
+          title={t('draw.resetTeams')}
+          color={temaAtual.botao}
           onPress={() => setTimes([])}
         />
       </View>
@@ -111,63 +123,76 @@ const styles = StyleSheet.create({
     padding: 20,
     height: '100%'
   },
-  inputRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-  },
-  input: {
-    flex: 1,
-    backgroundColor: "#c9fd06",
-    borderRadius: 15,
-    paddingHorizontal: 12,
-    height: 40,
-    fontSize: 14,
-    color: "#000",
-  },
-  addButton: {
-    backgroundColor: "blue",
-    marginLeft: 6,
-    borderRadius: 15,
-    width: 40,
-    height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  starsRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 15,
-  },
-  star: {
-    marginRight: 6,
-  },
-  playersContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    marginVertical: 10,
-  },
-  playerBadge: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "blue",
-    borderRadius: 20,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    margin: 4,
-  },
-  playerText: {
-    color: "white",
-    marginRight: 6,
-    fontSize: 14,
-  },
-  habilidadeInline: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginRight: 6,
-  },
-  habilidadeNum: {
-    color: "white",
-    marginRight: 2,
-  },
-});
+  head: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%'
+    },
+    titulo: {
+        fontSize: 30,
+        paddingLeft: 30,
+        paddingTop: 10,
+    },
+    botoesTroca: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    inputRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 10,
+    },
+    input: {
+      flex: 1,
+      borderRadius: 15,
+      paddingHorizontal: 12,
+      height: 40,
+      fontSize: 14,
+      color: "#000",
+    },
+    addButton: {
+      backgroundColor: "blue",
+      marginLeft: 6,
+      borderRadius: 15,
+      width: 40,
+      height: 40,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    starsRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 15,
+    },
+    star: {
+      marginRight: 6,
+    },
+    playersContainer: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      marginVertical: 10,
+    },
+    playerBadge: {
+      flexDirection: "row",
+      alignItems: "center",
+      backgroundColor: "blue",
+      borderRadius: 20,
+      paddingHorizontal: 12,
+      paddingVertical: 6,
+      margin: 4,
+    },
+    playerText: {
+      color: "white",
+      marginRight: 6,
+      fontSize: 14,
+    },
+    habilidadeInline: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginRight: 6,
+    },
+    habilidadeNum: {
+      color: "white",
+      marginRight: 2,
+    },
+  });
