@@ -1,5 +1,14 @@
-import { Stack } from "expo-router";
+import { ThemeProvider } from '../contexts/ThemeContext';
+import { Stack } from 'expo-router';
 
 export default function RootLayout() {
-  return <Stack />;
-}
+  return (
+    <ThemeProvider>
+      <Stack >
+        <Stack.Screen name='index' />
+        <Stack.Screen name='cadastro' />
+        <Stack.Screen name='placar' />
+      </Stack>
+    </ThemeProvider>
+  );
+};

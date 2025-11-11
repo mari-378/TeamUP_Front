@@ -1,13 +1,17 @@
 import { View, StyleSheet, Image } from "react-native";
 import Login from "../components/Login";
 import MudarLingua from "../components/MudarLingua";
-import { Cores } from "@/constants/Cores";
+import MudarTema from "../components/MudarTema";
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function PaginaDeLogin() {
+  const { temaAtual } = useTheme();
+
   return (
-    <View style={styles.container}>
-      <View style={styles.mudarLingua}>
+    <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
+      <View style={styles.botoes}>
         <MudarLingua />
+        <MudarTema />
       </View>
       <View style={styles.logo}>
         <Image 
@@ -26,12 +30,11 @@ export default function PaginaDeLogin() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Cores.branco,
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
   },
-  mudarLingua: {
+  botoes: {
     position: 'absolute',
     top: 40,
     right: 40,

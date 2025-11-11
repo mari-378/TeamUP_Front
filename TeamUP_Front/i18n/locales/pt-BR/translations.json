@@ -15,6 +15,21 @@
         "termsContent": "Aqui estão os termos de uso...",
         "close": "FECHAR"
     },
+    "signup": {
+        "confirmPassword": "Confirmar senha",
+        "signup": "CADASTRO",
+        "name": "Nome completo",
+        "birthDate": "Data de nascimento:",
+        "day": "Dia",
+        "month": "Mês",
+        "year": "Ano",
+        "gender": "Gênero:",
+        "female": "F",
+        "male": "M",
+        "other": "Outro",
+        "message": "Ao clicar em Cadastrar, você aceita nossos Termos, Política de Privacidade e Política de Cookies.",
+        "sign": "CADASTRAR"
+    },
     "validation": {
         "invalidEmail": "Formato de email inválido",
         "emailRequired": "A senha deve ter pelo menos 6 caracteres",
@@ -22,11 +37,67 @@
         "passwordRequired": "A senha é obrigatória",
         "nameRequired": "O nome é obrigatório",
         "passwordsMustMatch": "As senhas devem coincidir",
-        "confirmPasswordRequired": "A confirmação de senha é obrigatória"
+        "confirmPasswordRequired": "A confirmação de senha é obrigatória",
+        "invalidGender": "O gênero é obrigatório"
+    },
+    "score": {
+        "score": "Placar",
+        "teamA": "Time A",
+        "teamB": "Time B",
+        "result": "Resultados",
+        "period": "Período",
+        "save": "Salvar placar",
+        "reset": "Resetar placar"
     },
     "navbar": {
         "aboutUs": "Sobre Nós",
         "features": "Funcionalidades",
         "signUp": "Cadastrar"
+    },
+    "selectSport": {
+        "title": "Selecione um esporte:"
+    },
+    "featureOptions": {
+        "title": "Funcionalidades",
+        "teamDraw": "Sorteio de Equipes",
+        "score": "Placar",
+        "timer": "Cronômetro",
+        "rules": "Regras dos Jogos"
+    },
+    "timer": {
+        "start": "Iniciar",
+        "pause": "Pausar",
+        "reset": "Resetar",
+        "predefinedTimes": "Tempos pré-definidos:",
+        "personalizedTime": "Tempo personalizado:",
+        "placeholder": "Minutos"
+    },
+    "draw": {
+        "placeholder": "Digite o nome",
+        "drawTeams": "Sortear times",
+        "resetTeams": "Resetar times"
+    },
+    "sports": {
+        "football": "Futebol",
+        "volleyball": "Vôlei",
+        "basketball": "Basquete"
+    },
+    "football": {
+        "firstRule": "O jogo é disputado por duas equipes de 11 jogadores cada (incluindo o goleiro).",
+        "secondRule": "Só o goleiro pode usar as mãos, e apenas dentro da área dele.",
+        "thirdRule": "A partida tem dois tempos de 45 minutos cada.",
+        "fourthRule": "Um gol só é válido quando a bola cruza totalmente a linha entre as traves e sob o travessão."
+    },
+    "volleyball": {
+        "firstRule": "Cada equipe tem 6 jogadores em quadra.",
+        "secondRule": "Cada time pode dar no máximo 3 toques na bola antes de enviá-la para o outro lado.",
+        "thirdRule": "Não é permitido segurar ou conduzir a bola — ela deve ser rebatida.",
+        "fourthRule": "O jogo é em sets de 25 pontos (vence quem ganhar 3 sets primeiro, em partidas normais)."
+    },
+    "basketball": {
+        "firstRule": "Cada equipe joga com 5 jogadores em quadra.",
+        "secondRule": "O jogo é dividido em 4 quartos de 10 ou 12 minutos (dependendo da liga).",
+        "thirdRule": "Um arremesso vale 2 pontos, 3 pontos se feito de fora da linha de 3, e 1 ponto em lance livre.",
+        "fourthRule": "Cada time tem 24 segundos para tentar um arremesso (regra dos 24 segundos)."
     }
 }
