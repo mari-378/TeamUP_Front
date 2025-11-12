@@ -52,20 +52,20 @@ export default function Cronometro() {
 
   return (
     <View style={[styles.container, { backgroundColor: temaAtual.fundo }]}>
-      <View style={styles.timerBox}>
+      <View style={[styles.timerBox, {backgroundColor: temaAtual.caixaTexto }]}>
         <Text style={styles.timerText}>{formatTime(time)}</Text>
       </View>
 
       <View style={styles.controls}>
-        <TouchableOpacity style={styles.button} onPress={start}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: "#fff" }]} onPress={start}>
           <MaterialIcons name="play-arrow" size={22} color="#000" />
           <Text style={styles.buttonText}>{t('timer.start')}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={pause}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: "#fff" }]} onPress={pause}>
           <Ionicons name="pause" size={22} color="#000" />
           <Text style={styles.buttonText}>{t('timer.pause')}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={reset}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: "#fff" }]} onPress={reset}>
           <MaterialIcons name="refresh" size={22} color="#000" />
           <Text style={styles.buttonText}>{t('timer.reset')}</Text>
         </TouchableOpacity>
@@ -104,7 +104,6 @@ export default function Cronometro() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f8f3e8",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
@@ -115,7 +114,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   timerBox: {
-    backgroundColor: "#e5f87f",
     borderRadius: 12,
     paddingVertical: 30,
     paddingHorizontal: 50,
@@ -133,7 +131,6 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#fff",
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 8,
