@@ -21,7 +21,7 @@ export default function Login() {
 
   const { control, formState: { errors }, handleSubmit } = useForm({
     resolver: yupResolver(schema),
-    mode: 'onChange',
+    mode: 'onSubmit',
     defaultValues: {
       email: '',
       password: '',

@@ -23,7 +23,7 @@ export default function Cadastro() {
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
-        mode: 'onChange',
+        mode: 'onSubmit',
         defaultValues: {
             name: '',
             email: '',
