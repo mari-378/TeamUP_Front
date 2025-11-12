@@ -8,6 +8,8 @@ import Cronometro from '../components/Cronometro';
 import BotaoAlterarPlacar from '../components/BotaoAlterarPlacar';
 import Botao from '../components/Botao';
 import PlacarSalvo from '../components/PlacarSalvo';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 
 export default function PaginaCronometroPlacar() {
   const { temaAtual } = useTheme();
@@ -39,6 +41,7 @@ export default function PaginaCronometroPlacar() {
       style={[styles.root, { backgroundColor: temaAtual.fundo }]}
       contentContainerStyle={styles.scrollContent}
     >
+      <NavBar />
       <View style={styles.header}>
         <Text style={[styles.titulo, { color: temaAtual.texto }]}>
           {t('featureOptions.timerAndScore')}
@@ -112,6 +115,7 @@ export default function PaginaCronometroPlacar() {
           <Botao title={t('score.reset')} onPress={resetarPlacar} style={styles.botao} />
         </View>
       </View>
+      <Footer />
     </ScrollView>
   );
 }
