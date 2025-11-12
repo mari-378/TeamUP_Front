@@ -47,12 +47,19 @@ export default function Cadastro() {
         console.log('Dados a serem enviados', payload)
 
         try {
-            await axios.post('http://localhost:3000/cadastro', payload, {
+            const response = await axios.post('http://localhost:3000/cadastro', payload, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-            router.push('/funcionalidades');
+            
+            if (response.status === 201) {
+                router.push('/funcionalidades');
+                console.log('Usuário cadastrado com sucesso');
+            } else {
+                console.log('Erro ao cadastrar usuário', response.data);
+            }
+
         } catch (error) {
             if (error.response) {
                 console.log('Erro no servidor', error.response.data?.message);
