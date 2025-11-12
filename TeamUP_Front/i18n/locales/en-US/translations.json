@@ -49,7 +49,8 @@
         "result": "Results",
         "period": "Period",
         "save":"Save score",
-        "reset": "Reset score"
+        "reset": "Reset score",
+        "noSaved": "No saved scores"
     },
     "navbar": {
         "aboutUs": "About Us",
@@ -62,8 +63,9 @@
     "featureOptions": {
         "title": "Features",
         "teamDraw": "Team Draw",
-        "score": "Score",
         "timer": "Timer",
+        "score": "Score",
+        "timerAndScore": "Timer and Score",
         "rules": "Games Rules"
     },
     "timer": {

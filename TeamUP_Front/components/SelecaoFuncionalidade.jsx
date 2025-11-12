@@ -15,12 +15,8 @@ export default function SelecaoFuncionalidade() {
                 onPress={() => router.push('/maxjogadores')}
             />
             <Botao
-                title={t('featureOptions.score')} 
-                onPress={() => router.push('/placar')}
-            />
-            <Botao
-                title={t('featureOptions.timer')} 
-                onPress={() => router.push('/cronometro')}
+                title={t('featureOptions.timerScore')} 
+                onPress={() => router.push('/cronometroPlacar')}
             />
             <Botao
                 title={t('featureOptions.rules')} 
