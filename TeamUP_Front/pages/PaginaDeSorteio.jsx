@@ -57,27 +57,29 @@ export default function PaginaDeSorteio() {
       <View style={styles.head}>
         <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('featureOptions.rules')}</Text>
         <View style={styles.botoesTroca}>
-            <MudarLingua />
-            <MudarTema />
+            <MudarLingua testID="btn-mudar-lingua"/>
+            <MudarTema testID="btn-mudar-tema"/>
         </View>               
       </View>
       
       <View style={styles.inputRow}>
-        <TextInput
+        <TextInput 
+          testID = "input-nome-jogador"
           style={[styles.input, { backgroundColor: temaAtual.caixaTexto }]}
           placeholder={t('draw.placeholder')}
           placeholderTextColor={temaAtual.textoAzul}
           value={nome}
           onChangeText={setNome}
+         
         />
-        <TouchableOpacity style={styles.addButton} onPress={adicionarJogador}>
+        <TouchableOpacity style={styles.addButton} onPress={adicionarJogador} testID="btn-adicionar-jogador">
           <MaterialIcons name="add" size={22} color="white" />
         </TouchableOpacity>
       </View>
 
-      <View style={styles.starsRow}>
+      <View style={styles.starsRow} testID="grupo-estrelas-habilidade">
         {[1, 2, 3, 4, 5].map((num) => (
-          <TouchableOpacity key={num} onPress={() => setHabilidadeTemp(num)}>
+          <TouchableOpacity key={num} onPress={() => setHabilidadeTemp(num)} testID={`estrela-habilidade-${num}`}>
             <MaterialIcons
               name={num <= habilidadeTemp ? "star" : "star-border"}
               size={30}
@@ -88,30 +90,32 @@ export default function PaginaDeSorteio() {
         ))}
       </View>
 
-      <View style={styles.playersContainer}>
+      <View style={styles.playersContainer} testID="lista-jogadores">
         {jogadores.map((jogador, index) => (
-          <View key={index} style={styles.playerBadge}>
+          <View key={index} style={styles.playerBadge} testID={`jogador-${index}`}>
             <Text style={styles.playerText}>{jogador.nome}</Text>
             <View style={styles.habilidadeInline}>
               <Text style={styles.habilidadeNum}>{jogador.habilidade}</Text>
               <MaterialIcons name="star" size={18} color={temaAtual.caixaTexto} />
             </View>
-            <TouchableOpacity onPress={() => removerJogador(index)}>
+            <TouchableOpacity onPress={() => removerJogador(index)}
+                testID={`btn-remover-jogador-${index}`}>
               <MaterialIcons name="delete" size={18} color="white" />
             </TouchableOpacity>
           </View>
         ))}
       </View>
 
-      <Button title={t('draw.drawTeams')} color={temaAtual.botao} onPress={sortearTimes} />
+      <Button title={t('draw.drawTeams')} color={temaAtual.botao} onPress={sortearTimes} testID="btn-sortear-times" />
 
-      {times.length > 0 && <Times times={times} />}
+      {times.length > 0 && <Times times={times} testID="times-gerados"/>}
 
       <View style={{ marginTop: 10 }}>
         <Button
           title={t('draw.resetTeams')}
           color={temaAtual.botao}
           onPress={() => setTimes([])}
+          testID="btn-resetar-times"
         />
       </View>
     </ScrollView>

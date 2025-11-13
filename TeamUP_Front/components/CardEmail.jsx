@@ -27,10 +27,12 @@ export default function CardEmail({ control, errors }) {
                         <TextInput
                             style={[styles.input, { outline: 'none', color: temaAtual.textoAzul }]}
                             placeholder={t('login.email')}
+                            testID="input-email" 
                             value={value}
                             onChangeText={onChange}
                             keyboardType='email-address'
                             autoCapitalize='none'
+                            editable={true}
                         />
                     </View>
                     {errors.email && <Text style={[styles.error, { color: temaAtual.error }]}>{errors.email.message}</Text>}

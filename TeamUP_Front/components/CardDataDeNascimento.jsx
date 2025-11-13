@@ -36,6 +36,7 @@ export default function CardDataDeNascimento({ control, errors }) {
                                         selectedValue={value.day}
                                         onValueChange={(val) => handleChange('day', val)}
                                         style={[styles.picker, { color: Cores.light.textoAzul }]}
+                                        testID="input-dia"
                                     >
                                     <Picker.Item label={t('signup.day')} value={null} color={Cores.light.textoAzul}/>
                                     {days.map(d => (
@@ -49,6 +50,7 @@ export default function CardDataDeNascimento({ control, errors }) {
                                     selectedValue={value.month}
                                     onValueChange={(val) => handleChange('month', val)}
                                     style={[styles.picker, { color: Cores.light.textoAzul }]}
+                                    testID="input-mes"
                                 >
                                 <Picker.Item label={t('signup.month')} value={null} color={Cores.light.textoAzul}/>
                                 {months.map(m => (
@@ -62,6 +64,7 @@ export default function CardDataDeNascimento({ control, errors }) {
                                     selectedValue={value.year}
                                     onValueChange={(val) => handleChange('year', val)}
                                     style={[styles.picker, { color: Cores.light.textoAzul }]}
+                                    testID="input-ano"
                                 >
                                 <Picker.Item label={t('signup.year')} value={null} color={Cores.light.textoAzul}/>
                                 {years.map(y => (

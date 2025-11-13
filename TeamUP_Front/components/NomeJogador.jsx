@@ -28,13 +28,14 @@ export default function NomeJogador({ onAdicionar }) {
       {/* Input + Botão */}
       <View style={styles.inputRow}>
         <TextInput
+          testID="input-nome-jogador"
           style={styles.input}
           placeholder="Digite o nome"
           placeholderTextColor="#6B6B6B"
           value={nome}
           onChangeText={setNome}
         />
-        <TouchableOpacity style={styles.addButton} onPress={adicionar}>
+        <TouchableOpacity style={styles.addButton} testID="botao-adicionar" onPress={adicionar}>
           <MaterialIcons name="add" size={22} color="white" />
         </TouchableOpacity>
       </View>

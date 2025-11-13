@@ -39,6 +39,8 @@ export default function CardGenero({ control, errors }) {
                                                 console.log('genero', opcao.value)
                                                 onChange(opcao.value);
                                             }}
+                                            testID={`input-genero-${opcao.value}`}
+                                            data-testid={`input-genero-${opcao.value}`} 
                                         >
                                             <View style={styles.conteudo}>
                                                 <Text style={[styles.texto, { color: temaAtual.textoSecundario }]}>{opcao.label}</Text>

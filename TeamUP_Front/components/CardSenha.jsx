@@ -29,6 +29,7 @@ export default function CardEmail({ control, errors }) {
                             <TextInput
                                 style={[styles.input, { outline: 'none', color: temaAtual.textoAzul }]}
                                 placeholder={t('login.password')}
+                                testID="input-senha" 
                                 value={value}
                                 onChangeText={onChange}
                                 secureTextEntry={!mostrarSenha}

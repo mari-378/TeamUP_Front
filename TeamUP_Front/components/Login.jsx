@@ -21,7 +21,7 @@ export default function Login() {
 
   const { control, formState: { errors }, handleSubmit } = useForm({
     resolver: yupResolver(schema),
-    mode: 'onChange',
+    mode: 'onSubmit',
     defaultValues: {
       email: '',
       password: '',
@@ -33,7 +33,7 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post('http://localhost:3000/login', {
+      const response = await axios.post('http://localhost:3000/login', {
         email: data.email,
         senha: data.password,
       },
@@ -42,22 +42,32 @@ export default function Login() {
           'Content-Type': 'application/json',
         },
       });
+
+      if (response.status === 200) {
+        router.push('/funcionalidades');
+      } else {
+        Alert.alert('Erro', 'Credenciais inválidas ou erro inesperado.');
+      }
+
     } catch (error) {
       if (error.response) {
         console.log('Erro no servidor', error.response.data?.message);
+        Alert.alert('Erro no login', error.response.data?.message || 'Falha ao fazer login.');
       } else if (error.request) {
         console.log('Sem resposta do servidor');
+        Alert.alert('Erro', 'Sem resposta do servidor.');
       } else {
         console.log('Erro', error.message);
+        Alert.alert('Erro', 'Erro ao tentar fazer login.');
       }
     };
   };
 
   return (
     <View style={styles.container}>
-      <CardEmail control={control} errors={errors} />
+      <CardEmail control={control} errors={errors} testID="input-email"/>
 
-      <CardSenha control={control} errors={errors} />
+      <CardSenha control={control} errors={errors} testID="input-senha"/>
 
       <TouchableOpacity onPress={() => Alert.alert('Redefinir senha', 'Funcionalidade ainda não implementada')}>
         <Text style={[styles.forgotPassword, { color: temaAtual.textoSecundario }]}>{t('login.forgotPassword')}</Text>
@@ -106,12 +116,13 @@ export default function Login() {
 
       <Botao
         title={t('login.loginButton')}
+        testID= "btn-login"
         onPress={() => {
           if (!aceitouTermos) {
+            Alert.alert('Aviso', 'Você precisa aceitar os termos de serviço antes de continuar.'); // traduzir aqui depois!!
             return;
           }
           handleSubmit(onSubmit)();
-          router.push('/funcionalidades')
         }}
       />
 
@@ -119,11 +130,13 @@ export default function Login() {
         title={t('login.createAccountButton')} 
         onPress={() => router.push('/cadastro')}  
         style={{ marginBottom: 10 }} 
+        testID= "btn-ir-cadastro"
       />
 
       <TouchableOpacity 
         style={[styles.loginGoogle, { borderColor: temaAtual.icones }]} 
         onPress={() => Alert.alert('Login com Google', 'Funcionalidade ainda não implementada')}
+        testID = "btn-login-google"
       >
         <AntDesign 
           name="google" 

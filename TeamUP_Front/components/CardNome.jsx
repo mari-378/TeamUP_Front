@@ -27,6 +27,7 @@ export default function CardEmail({ control, errors }) {
                         <TextInput
                             style={[styles.input, { outline: 'none', color: temaAtual.textoAzul }]}
                             placeholder={t('signup.name')}
+                            testID="input-nome" 
                             value={value}
                             onChangeText={onChange}
                             keyboardType='default'

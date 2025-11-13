@@ -23,7 +23,7 @@ export default function Cadastro() {
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
-        mode: 'onChange',
+        mode: 'onSubmit',
         defaultValues: {
             name: '',
             email: '',
@@ -47,12 +47,19 @@ export default function Cadastro() {
         console.log('Dados a serem enviados', payload)
 
         try {
-            await axios.post('http://localhost:3000/cadastro', payload, {
+            const response = await axios.post('http://localhost:3000/cadastro', payload, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-            router.push('/funcionalidades');
+            
+            if (response.status === 201) {
+                router.push('/funcionalidades');
+                console.log('Usuário cadastrado com sucesso');
+            } else {
+                console.log('Erro ao cadastrar usuário', response.data);
+            }
+
         } catch (error) {
             if (error.response) {
                 console.log('Erro no servidor', error.response.data?.message);
@@ -66,16 +73,17 @@ export default function Cadastro() {
 
     return (
         <View style={styles.container}>
-            <CardNome control={control} errors={errors}/>
-            <CardEmail control={control} errors={errors} />
-            <CardSenha control={control} errors={errors} />
-            <CardConfirmarSenha control={control} errors={errors} />
-            <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('signup.birthDate')}</Text>
-            <CardDataDeNascimento control={control} errors={errors} />
+            <CardNome control={control} errors={errors} testID="input-nome" />
+            <CardEmail control={control} errors={errors} testID="input-email" />
+            <CardSenha control={control} errors={errors} testID="input-senha" />
+            <CardConfirmarSenha control={control} errors={errors} testID="input-confirmar-senha"/>
+            <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('signup.birthDate')} </Text>
+            <CardDataDeNascimento control={control} errors={errors} testID="input-data-nascimento" />
             <Text style={[styles.titulo, { color: temaAtual.texto }]}>{t('signup.gender')}</Text>
-            <CardGenero control={control} errors={errors} />
+            <CardGenero control={control} errors={errors} testID="input-genero" />
             <Botao 
                 title={t('signup.signup')}
+                testID= "btn-cadastrar"
                 onPress={() => {
                     handleSubmit((data) => onSubmit(data), (errs) => console.log('erros do form', errs)) ();
                 }}

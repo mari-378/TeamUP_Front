@@ -29,6 +29,7 @@ export default function CardConfirmarSenha({ control, errors }) {
                             <TextInput
                                 style={[styles.input, { outline: 'none', color: temaAtual.textoAzul }]}
                                 placeholder={t('signup.confirmPassword')}
+                                testID="input-confirmar-senha" 
                                 value={value}
                                 onChangeText={onChange}
                                 secureTextEntry={!mostrarSenha}
